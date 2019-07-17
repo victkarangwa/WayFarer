@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  
+
+    <!-- Metadata -->
+<meta name="description" content="Public bus transportation booking service">
+<meta name="author" content="Victor Karangwa">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Styles -->
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <!-- Javascript  -->
+ <script type="text/javascript" src="js/scripts.js"></script>
+</head>
+<body>
+    <div class="mobnav">
+        <span class="mob-menu-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <div class="mob-logo">
+        <img class="main-logo" src="img/logo.png">
+      </div>
+      </div>
+          </div>
+      
+          <nav class="navbar">
+      
+              <ul class="topnav">
+                  <li class="k"><a class="menulink" href="signin.html">Login</a>
+
+                    <li><a class="menulink" href="about.html">About</a></li>
+                    <li><a class="menulink" href="contact.html">Contact</a></li>
+                    <li><a class="menulink  active" href="view_booking.html">Bookings</a></li>
+                    <li><a class="menulink" href="view_trips.html">Trips</a></li>
+                    <li><a class="menulink" href="index.html">Home</a></li>
+                    <img class="main-logo" src="img/logo.png">
+                  </ul>
+                  
+              
+    </nav>
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            
+            <a href="index.html">Home</a>
+            <hr class="menu-separtor">
+            <a href="view_trips.html">Trips</a>
+            <hr class="menu-separtor">
+            <a class="active" shref="view_booking.html">Bookings</a>
+            <hr class="menu-separtor">
+            <a href="contact.html">Contact</a>
+            <hr class="menu-separtor">
+            <a  href="about.html">About</a>
+            <hr class="menu-separtor">
+            <a href="signin.html">Login</a>
+            <hr class="menu-separtor">
+          </div>
+      
+
+       
+
+        <!-- Dialog content -->
+        <div class="available_booking">
+                <div class="modal-header">
+                        <h3>My Bookings</h3>
+                      </div>
+                 
+                         <!-- Booking Cards -->
+                         <div class="card-book">
+                             <div class="home-search-row">
+                       <div class="home-search-column">
+                       <b><span class="custom-header" id="book-origin">Ngoma</span> - <span class="custom-header" id="book-destination">Kampala</span></b>
+                       <em><span id="book-date">11 May 2019</span> <span id="book-time">06:00 AM</span></em>
+                       </div>
+                       <div class="right">
+                           <input type="button" onclick="viewBooking()" class="small custom-btn" value="View" />
+                       </div>
+                       
+                   </div>
+
+                         </div>
+                         <div class="card-book">
+                                <div class="home-search-row">
+                          <div class="home-search-column">
+                          <b><span class="custom-header" id="book-origin">Ngoma</span> - <span class="custom-header" id="book-destination">Kampala</span></b>
+                          <em><span id="book-date">11 May 2019</span> <span id="book-time">06:00 AM</span></em>
+                          </div>
+                          <div class="right">
+                              <input type="button" class="small custom-btn" value="View" />
+                          </div>
+                          
+                      </div>
+   
+                            </div>
+                            <div class="card-book">
+                                    <div class="home-search-row">
+                              <div class="home-search-column">
+                              <b><span class="custom-header" id="book-origin">Ngoma</span> - <span class="custom-header" id="book-destination">Kampala</span></b>
+                              <em><span id="book-date">11 May 2019</span> <span id="book-time">06:00 AM</span></em>
+                              </div>
+                              <div class="right">
+                                  <input type="button" class="small custom-btn" value="View" />
+                              </div>
+                              
+                          </div>
+       
+                                </div>
+                   
+                         <!-- Booking Cards -->
+         
+        
+        
+      
+      </div>  
+
+      <div class="modal-view">
+            <div class="create-trip-modal create-trip-modal-js">
+                <form class="custom-form">
+                <h2 class="most-title"><!--<img class="img-icon" src="img/trip_icon.png"/>-->Kigali-Rubavu Trip<label class="closeDialog" style="float: right" onclick="closeModalView()">&times;</label></h2>
+               <table class="custom-table">
+                 <tr>
+                   <th>Trip Id</th>
+                   <td id="viewId" >KGL17RB</td>
+                 </tr>
+                 <tr>
+                  <th>Reservee</th>
+                  <td id="viewName" >Victor KARANGWA</td>
+                </tr>
+                      <tr>
+                          <th>Trip Date</th>
+                          <td id="viewDate" >11th May 2019</td>
+                        </tr>
+                        <tr>
+                            
+                      <tr>
+                            <th>Trip Time</th>
+                            <td id="viewTIme" >06:00 AM</td>
+                          </tr>
+                          <tr>
+                                <th>Origin</th>
+                                <td id="viewOrgin" >Kigali</td>
+                              </tr>
+                              <tr>
+                                    <th>Destination</th>
+                                    <td id="viewDestination" >Rubavu</td>
+                                  </tr>
+                        <tr>
+                            <th>Seating Capacity</th>
+                            <td id="viewSeats" >40</td>
+                          </tr>
+                        
+                         
+                            <tr>
+                                <th>Bus Licence Number</th>
+                                <td id="viewPlate" >RAE 501 A</td>
+                              </tr>
+                              <tr>
+                                  <th>Trip Fare</th>
+                                  <td id="viewFare" >Rwf 3500</td>
+                                </tr>
+                                <tr>
+                                        <th>Date Booked</th>
+                                        <td id="viewFare" >11 May 2019</td>
+                                      </tr>
+                                      <tr>
+                                            <td> <input type="button" class="custom-btn" value="Cancel Trip" onclick="dialogbox('Are you sure you want to cancel this booking?')"/></td>
+                                            <td><a href="#" >See the trip</a></td>
+                                          </tr>
+                              
+               </table>
+
+                
+               
+                     
+               
+                </form>
+                
+        </div>   
+        </div>
+
+                  <!-- Dialog With Buttons-->
+
+
+<!-- Dialog Box -->
+<div id="dialogbox" class="modal">
+      
+        <!-- Dialog content -->
+        <div class="modal-content">
+                <div class="modal-header">
+                        <span class="close" onclick="closeDialog()">&times;</span>
+                        <h2>Way Farer</h2>
+                      </div>
+                      <div class="modal-body">
+          <span class="dialog-content dialog-content-js"></span>
+        </div>
+        <div class="modal-buttons">
+            <input type="button" class="custom-btn" value="No" onclick="closeDialog()"/>
+            <input type="button" class="custom-btn" value="Yes" onclick="cancelTrip()"/>
+        </div>
+        </div>
+      
+      </div>
+</body>
+<div class="footer">
+    <p id="pd">&copy;2019 All Right reserved</p>
+</div>
+
+</html>
