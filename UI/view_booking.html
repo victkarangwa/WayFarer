@@ -15,6 +15,7 @@
  <script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
+  <!--Button to open  Naviation Menu for responsiveness (For small devices) -->
     <div class="mobnav">
         <span class="mob-menu-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
         <div class="mob-logo">
@@ -22,7 +23,7 @@
       </div>
       </div>
           </div>
-      
+      <!-- Normal Navigation Men -->
           <nav class="navbar">
       
               <ul class="topnav">
@@ -38,6 +39,7 @@
                   
               
     </nav>
+    <!--Naviation Menu for responsiveness (For small devices) -->
     <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             
@@ -161,7 +163,8 @@
                                         <th>Date Booked</th>
                                         <td id="viewFare" >11 May 2019</td>
                                       </tr>
-                                      <tr>
+                                      <tr> 
+                                        <!-- Button to allow booking deletion/Canceling -->
                                             <td> <input type="button" class="custom-btn" value="Cancel Trip" onclick="dialogbox('Are you sure you want to cancel this booking?')"/></td>
                                             <td><a href="#" >See the trip</a></td>
                                           </tr>
@@ -180,10 +183,10 @@
                   <!-- Dialog With Buttons-->
 
 
-<!-- Dialog Box -->
+<!-- Dialog Box to display the feedback to the user -->
 <div id="dialogbox" class="modal">
       
-        <!-- Dialog content -->
+        <!-- Dialogbox content -->
         <div class="modal-content">
                 <div class="modal-header">
                         <span class="close" onclick="closeDialog()">&times;</span>
