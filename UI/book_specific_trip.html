@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  
+
+    <!-- Metadata -->
+<meta name="description" content="Public bus transportation booking service">
+<meta name="author" content="Victor Karangwa">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Styles -->
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <!-- Javascript  -->
+ <script type="text/javascript" src="js/scripts.js"></script>
+</head>
+<body>
+    <div class="mobnav">
+        <span class="mob-menu-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <div class="mob-logo">
+        <img class="main-logo" src="img/logo.png">
+      </div>
+      </div>
+          </div>
+      
+          <nav class="navbar">
+      
+              <ul class="topnav">
+                  <li class="k"><a class="menulink" href="signin.html">Login</a>
+
+                    <li><a class="menulink" href="about.html">About</a></li>
+                    <li><a class="menulink" href="contact.html">Contact</a></li>
+                    <li><a class="menulink active" href="view_booking.html">Bookings</a></li>
+                    <li><a class="menulink " href="view_trips.html">Trips</a></li>
+                    <li><a class="menulink" href="index.html">Home</a></li>
+                    <img class="main-logo" src="img/logo.png">
+                  </ul>
+                  
+              
+    </nav>
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            
+            <a href="index.html">Home</a>
+            <hr class="menu-separtor">
+            <a href="view_trips.html">Trips</a>
+            <hr class="menu-separtor">
+            <a class="active" href="view_booking.html">Bookings</a>
+            <hr class="menu-separtor">
+            <a href="contact.html">Contact</a>
+            <hr class="menu-separtor">
+            <a  href="about.html">About</a>
+            <hr class="menu-separtor">
+            <a href="signin.html">Login</a>
+            <hr class="menu-separtor">
+          </div>
+      
+         
+
+<div class="trip-book-container">
+          <div class="book-trip book-trip-js">
+                <form class="custom-form">
+                <h2 class="most-title">Trip Booking</h2>
+               <table class="custom-table">
+                 <tr>
+                   <th>Trip Id</th>
+                   <td id="viewId" >KGL17RB</td>
+                 </tr>
+         
+                      <tr>
+                          <th>Trip Date</th>
+                          <td id="viewDate" >11th May 2019</td>
+                        </tr>
+                        <tr>
+                            
+                      <tr>
+                            <th>Trip Time</th>
+                            <td id="viewTIme" >06L00 AM</td>
+                          </tr>
+                          <tr>
+                                <th>Origin</th>
+                                <td id="viewOrgin" >Kigali</td>
+                              </tr>
+                              <tr>
+                                    <th>Destination</th>
+                                    <td id="viewDestination" >Rubavu</td>
+                                  </tr>
+                        <tr>
+                            <th>Seating Capacity</th>
+                            <td id="viewSeats" >40</td>
+                          </tr>
+                        
+                         
+                            <tr>
+                                <th>Bus Licence Number</th>
+                                <td id="viewPlate" >RAE 501 A</td>
+                              </tr>
+                              <tr>
+                                  <th>Trip Fare</th>
+                                  <td id="viewFare" >Rwf 3500</td>
+                                </tr>
+              
+                              
+               </table>
+        
+                
+               
+                     
+             
+                  
+                </form>
+                
+        </div>
+        <div id="bookinginfo" >
+            <form class="custom-form">
+          
+                <h2 class="most-title">Passenger Information</h2>
+                <label class="custom-label"><b>Name</b></label>
+                <input  type="text"  class="trip-input" id="pasName" required>
+                <label class="custom-label"><b>Email</b></label>
+                <input  type="text" class="trip-input" id="PasEmail" required>
+                <label class="custom-label" ><b>Gender</b></label>
+                <select class="trip-input">
+                  <option selected disabled>Choose</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+                <label class="custom-label" ><b>Phone Number</b></label>
+                <input type="number" value="Kigali" class="trip-input" id="pasPhone" required>
+                <label class="custom-label" ><b>Seat</b></label>
+                <select class="trip-input">
+                    <option>24</option>
+                    <option>5</option>
+                  </select>
+                
+                <div class="search-btn-container">
+                    <input type="submit" class="btn" value="Book Now" onclick="bookTrip()"/>
+                 </div>
+            </form>
+        <form id="forOther">
+        </form>
+        </div>
+  
+</div>
+
+  
+
+<!-- Dialog Box -->
+<div id="dialogbox" class="modal">
+
+        <!-- Dialog content -->
+        <div class="modal-content">
+                <div class="modal-header">
+                        <span class="close" onclick="closeDialog()">&times;</span>
+                        <h2>WayFarer</h2>
+                      </div>
+                      <div class="modal-body">
+          <span class="dialog-content dialog-content-js"></span>
+        </div>
+        </div>
+      
+      </div>
+</body>
+<div class="footer">
+    <p id="pd">&copy;2019 All Right reserved</p>
+</div>
+
+</html>
