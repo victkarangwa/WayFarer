@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <!-- Metadata -->
+<meta name="description" content="Public bus transportation booking service">
+<meta name="author" content="Victor Karangwa">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Styles -->
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+
+    <!-- Javascript  -->
+ <script type="text/javascript" src="../js/scripts.js"></script>
+</head>
+<div class="main-container">
+<div class="user-body">
+
+        <body>
+                <div class="mobnav">
+              <span class="mob-menu-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+              <div class="mob-logo">
+              <img class="main-logo" src="../img/logo.png">
+            </div>
+            </div>
+               
+            
+                <nav class="navbar">
+                       
+                        <ul class="topnav">
+                             
+                                <li><a class="menulink" href="../index.html">Logout</a></li>
+                                
+                                <img class="main-logo" src="../img/logo.png">
+                                <h2 class="center-head"> Admin Panel</h2>
+                              </ul>
+                              
+                          
+                </nav>
+                <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="manage_booking.html">Manage Bookings</a>
+                        <hr class="menu-separtor">
+                        <a href="manage-trips.html">Manage Trips</a>
+                        <hr class="menu-separtor">
+                        <a href="manage-users.html">Manage Users</a>
+                        <hr class="menu-separtor">
+                        <a href="../index.html">Live Site</a>
+                        <hr class="menu-separtor">
+                        <a href="myaccount.html">Manage Account</a>
+                        <hr class="menu-separtor">
+                        <a href="../index.html">Logout</a>
+                      </div>
+            
+                      <div class="all-trips">
+                   <div class="admin-panel">
+                            <nav class="admin-nav-menu">
+            
+                                    <ul class="nav-admin">
+                                        <hr class="menu-separtor">
+                                            <li><a class="menulink-admin" href="manage_booking.html">Manage Booking</a></li>
+                                            <hr class="menu-separtor">
+                                            <li><a class="menulink-admin" href="manage-trips.html">Manage Trips</a></li>
+                                            <hr class="menu-separtor">
+                                            <li><a class="menulink-admin" href="manage-users.html"> Manage Users</a></li>
+                                            <hr class="menu-separtor">
+                                            <li><a class="menulink-admin" href="../index.html"> Live Site</a></li>
+                                            <hr class="menu-separtor">
+                                            <li><a class="menulink-active" href="myaccount.html">Manage Account</a></li>
+                                            <hr class="menu-separtor">
+                                          </ul>
+                                          
+                                      
+                            </nav>
+            
+            
+                   </div>
+            
+            
+               <div class="trip-list">
+                <div class="user-account">
+                
+                    <div class="container-row">
+                 <img class="user-photo" src="../img/avatar.png"/>
+                 <div class="container-column">
+                 <b><label class="custom-label" id="user-names" for="names">Victor KARANGWA</label></b>
+                 <label id="user-email" for="email">victorkarangwa4@gmail.com</label><b><label class="custom-label" id="user-prevelege" for="previlege">Administrator</label></b>
+                </div>
+                <div class="container-column">
+                    <label class="custom-label-admin">Username</label> 
+                            <input type="text" value="victorkarangwa4" class="trip-input" id="username">
+                            <label class="custom-label-admin">Email</label> 
+                               <input type="text" value="victorkarangwa4@gmail.com" class="trip-input" id="user-email">
+                               <label class="custom-label-admin">Password</label> 
+                                 <input type="password" value="victorkarangwa4" class="trip-input" id="user-password">
+                                 <label class="custom-label-admin">Full Names</label> 
+                                      <input type="text" value="Victor KARANGWA" class="trip-input" id="user-names">
+                                      <label class="custom-label-admin">Role</label> 
+                                            <input type="text" title="You can't change it yourself" value="Administrator" disabled class="trip-input" id="user-role">
+                                       
+                                                    <div class="search-btn-container">
+                                                            <input type="button" class="custom-btn" value="Save Changes"onclick="adminSaveChanges()"/>
+                                                                </div>
+                           
+               
+                </div>
+                    </div>
+                    
+            
+            </div>
+                
+               
+             
+            
+              
+                  
+             <!-- View a Specific trip -->
+            
+            </div>
+            <!-- ############################### -->
+            
+            </div>
+                 
+                  
+                  <!-- ################################ -->
+                  <!-- Dialog Box -->
+                  <div id="dialogbox" class="modal">
+                  
+                          <!-- Dialog content -->
+                          <div class="modal-content">
+                                  <div class="modal-header">
+                                          <span class="close" onclick="closeDialog()">&times;</span>
+                                          <h2>Way Farer</h2>
+                                        </div>
+                                        <div class="modal-body">
+                            <span class="dialog-content dialog-content-js"></span>
+                          </div>
+                          <div class="modal-buttons">
+                              <input type="button" class="custom-btn" value="No" onclick="closeDialog()"/>
+                              <input type="button" class="custom-btn" value="Yes" onclick="cancelTrip()"/>
+                          </div>
+                          </div>
+                        
+                        </div>
+                  </body>
+
+</div>
+    
+          <div class="footer">
+          <p id="pd">&copy;2019 All Right reserved</p>
+      </div> 
+     
+    </div>
+      
+      </html>
