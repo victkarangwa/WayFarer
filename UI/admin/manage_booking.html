@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <!-- Metadata -->
+<meta name="description" content="Public bus transportation booking service">
+<meta name="author" content="Victor Karangwa">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Styles -->
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+
+    <!-- Javascript  -->
+ <script type="text/javascript" src="../js/scripts.js"></script>
+</head>
+<body>
+    <div class="mobnav">
+  <span class="mob-menu-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  <div class="mob-logo">
+  <img class="main-logo" src="../img/logo.png">
+</div>
+</div>
+    </div>
+
+    <nav class="navbar">
+           
+            <ul class="topnav">
+                 
+                    <li><a class="menulink" href="../index.html">Logout</a></li>
+                    
+                    <img class="main-logo" src="../img/logo.png">
+                    <h2 class="center-head"> Admin Panel</h2>
+                  </ul>
+                  
+              
+    </nav>
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="manage_booking.html">Manage Bookings</a>
+            <hr class="menu-separtor">
+            <a href="manage-trips.html">Manage Trips</a>
+            <hr class="menu-separtor">
+            <a href="manage-users.html">Manage Users</a>
+            <hr class="menu-separtor">
+            <a href="../index.html">Live Site</a>
+            <hr class="menu-separtor">
+            <a href="myaccount.html">Manage Account</a>
+            <hr class="menu-separtor">
+            <a href="../index.html">Logout</a>
+          </div>
+
+          <div class="all-trips">
+       <div class="admin-panel">
+                <nav class="admin-nav-menu">
+
+                        <ul class="nav-admin">
+                            <hr class="menu-separtor">
+                                <li><a class="menulink-active" href="manage_booking.html">Manage Booking</a></li>
+                                <hr class="menu-separtor">
+                                <li><a class="menulink-admin" href="manage-trips.html">Manage Trips</a></li>
+                                <hr class="menu-separtor">
+                                <li><a class="menulink-admin" href="manage-users.html"> Manage Users</a></li>
+                                <hr class="menu-separtor">
+                                <li><a class="menulink-admin" href="../index.html"> Live Site</a></li>
+                                <hr class="menu-separtor">
+                                <li><a class="menulink-admin" href="myaccount.html">Manage Account</a></li>
+                                <hr class="menu-separtor">
+                              </ul>
+                              
+                          
+                </nav>
+
+
+       </div>
+
+
+   <div class="trip-list">
+      <div class="search-filter">
+        <div class="search-input-container">
+        <input  type="text" class="search-input" id="searchtrip" placeholder="Search a Booking">
+        <input type="button" value="search" class="btn-custom"/>
+     </div>
+     <select class="trip-input">
+       <option disabled selected >Filter Bookings By</option>
+       <option>User Id</option>
+       <option>Trip Id</option>
+       <option>Date Created</option>
+      </select>
+      </div>
+     
+      <div class="scrollable">
+     <table class="trip-table">
+        <thead>
+          <tr>
+        <th>Booking Id</th>
+        <th>Trip Id</th>
+        <th>User Id</th>
+        <th>User Names</th>
+        <th>Created At</th>
+        <th>Action</th>
+        
+       </tr>
+       </thead>
+       <tbody>
+             <tr>
+               <td>WF4785</td>
+               <td>KGL17RB</td>
+               <td>84SVs</td>
+               <td>Victor KARANGWA</td>
+               <td>11/07/209 06:00 AM</td>
+               <td><img title="Delete" alt="Delete" onclick="dialogbox('Are you sure you want to cancel this booking')" class="square-image"src="../img/delete.png"/></td>
+                     </tr>
+             <tr>
+                <td>WF4785</td>
+                <td>KGL17RB</td>
+                <td>84SVs</td>
+                <td>Victor KARANGWA</td>
+                <td>11/07/209 06:00 AM</td>
+                <td><img title="Delete" alt="Delete" onclick="editTrip()" class="square-image"src="../img/delete.png"/></td>           
+               </tr>
+               <tr>
+                  <td>WF4785</td>
+                  <td>KGL17RB</td>
+                  <td>84SVs</td>
+                  <td>Victor KARANGWA</td>
+                  <td>11/07/209 06:00 AM</td>
+                  <td><img title="Delete" alt="Delete" onclick="editTrip()" class="square-image"src="../img/delete.png"/></td>
+                 </tr>
+                 <tr>
+                    <td>WF4785</td>
+                    <td>KGL17RB</td>
+                    <td>84SVs</td>
+                    <td>Victor KARANGWA</td>
+                    <td>11/07/209 06:00 AM</td>
+                    <td><img title="Delete" alt="Delete" onclick="editTrip()" class="square-image"src="../img/delete.png"/></td>
+                   </tr>
+                   <tr>
+                      <td>WF4785</td>
+                      <td>KGL17RB</td>
+                      <td>84SVs</td>
+                      <td>Victor KARANGWA</td>
+                      <td>11/07/209 06:00 AM</td>
+                      <td><img title="Delete" alt="Delete" onclick="editTrip()" class="square-image"src="../img/delete.png"/></td>
+                     </tr>
+                
+                       
+           </tbody>
+      </table>
+    </div>
+      <div class="search-btn-container">
+  <input type="button" class="custom-btn" value="Reaserve a seat"/>
+      </div>
+ 
+
+ 
+         <!-- Crea trip modal-->
+    
+ <!-- View a Specific trip -->
+ 
+ <!-- <div class="modal-view">
+    <div class="create-trip-modal create-trip-modal-js">
+        <form class="custom-form">
+        <h2 class="most-title">{Booking Holder}<label class="closeDialog" style="float: right" onclick="closeModalView()">&times;</label></h2>
+       <table class="custom-table">
+         <tr>
+           <th>Trip Id</th>
+           <td id="viewId" >KGL17RB</td>
+         </tr>
+         <tr>
+            <th>Booking Id</th>
+            <td id="viewbookName" >WJF515d</td>
+          </tr>
+          <tr>
+              <th>User Id</th>
+              <td id="viewUserId" >Kigali</td>
+            </tr>
+            <tr>
+                <th>Reservee</th>
+                <td id="viewResName" >Victor KARANGWA</td>
+              </tr>
+              <tr>
+                  <th>Date Created</th>
+                  <td id="viewDateCreated" >11th May 2019</td>
+                </tr>
+              
+              
+                        <tr>
+                          <td> <input type="button" class="custom-btn" value="Cancel Booking" onclick="dialogbox('Are you sure you want to cancel this trip?')"/></td>
+                           </tr>
+       </table>
+
+        
+        
+             
+            
+          
+        </form>
+</div>   
+</div> -->
+</div>
+<!-- ############################### -->
+
+</div>
+      </div>
+      
+      <!-- ################################ -->
+      <!-- Dialog Box -->
+      <div id="dialogbox" class="modal">
+      
+              <!-- Dialog content -->
+              <div class="modal-content">
+                      <div class="modal-header">
+                              <span class="close" onclick="closeDialog()">&times;</span>
+                              <h2>Way Farer</h2>
+                            </div>
+                            <div class="modal-body">
+                <span class="dialog-content dialog-content-js"></span>
+              </div>
+              <div class="modal-buttons">
+                  <input type="button" class="custom-btn" value="No" onclick="closeDialog()"/>
+                  <input type="button" class="custom-btn" value="Yes" onclick="cancelTrip()"/>
+              </div>
+              </div>
+            
+            </div>
+      </body>
+      <div class="footer">
+          <p id="pd">&copy;2019 All Right reserved</p>
+      </div>
+      
+      </html>
