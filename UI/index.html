@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<head>
+  
+
+    <!-- Metadata -->
+<meta name="description" content="Public bus transportation booking service">
+<meta name="author" content="Victor Karangwa">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Styles -->
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    <!-- Javascript  -->
+ <script type="text/javascript" src="js/scripts.js"></script>
+</head>
+</head>
+<body>
+<body>
+    <div class="mobnav">
+        <span class="mob-menu-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">☰</span>
+        <div class="mob-logo">
+        <img class="main-logo" src="img/logo.png">
+      </div>
+      </div>
+          
+      
+          <nav class="navbar">
+            <ul class="topnav">
+              <li class="k"><a class="menulink" href="signin.html">Login</a>
+
+                <li><a class="menulink" href="about.html">About</a></li>
+                <li><a class="menulink" href="contact.html">Contact</a></li>
+                <li><a class="menulink" href="view_booking.html">Bookings</a></li>
+                <li><a class="menulink " href="view_trips.html">Trips</a></li>
+                <li><a class="menulink active" href="index.html">Home</a></li>
+                <img class="main-logo" src="img/logo.png">
+              </ul>
+              
+          
+</nav>
+<div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        
+        <a class="active" href="index.html">Home</a>
+        <hr class="menu-separtor">
+        <a href="view_trips.html">Trips</a>
+        <hr class="menu-separtor">
+        <a  href="view_booking.html">Bookings</a>
+        <hr class="menu-separtor">
+        <a href="contact.html">Contact</a>
+        <hr class="menu-separtor">
+        <a  href="about.html">About</a>
+        <hr class="menu-separtor">
+        <a href="signin.html">Login</a>
+        <hr class="menu-separtor">
+      </div>
+  
+      
+         
+<!-- ############################### -->
+<div class="custom-body">
+  <div class="container">
+    <div class="container-header">
+     <h2>BOOK WITH US &nbsp; JOURNEY WITH US </h2>
+    </div>
+    <div class="container-body">
+      <div class="home-search-column">
+           <div class="home-search-row">
+  <div class="location-input-container">
+            <input type="text" class="location-input" id="searchtrip" placeholder="Origin">
+            <input type="button" class="icon-custom-from">
+         </div>
+         <div class="location-input-container">
+            <input type="text" class="location-input" id="searchtrip" placeholder="Destination">
+            <input type="button" class="icon-custom-to">
+         </div>
+         <div class="location-input-container">
+            <input type="text" class="location-input" onfocus="(this.type = 'date')" id="searchtrip" placeholder="Date">
+            <input type="button" class="icon-custom-date">
+         </div>
+           </div>
+          
+        <input type="button" class="btn" value="Trip Search">
+      </div>
+
+    </div>
+        
+        
+    </div>
+
+</div> 
+<!-- ################################ -->
+<!-- Trip card-trip view -->
+<div>
+
+  
+</div>
+<h1 class="most-title">Get More Trips</h1>
+<div class="row">
+    <div class="column-trip">
+      <div class="card-trip">
+
+      <div class="location-info">
+          <b><span class="place" id="departure-js">Kigali, Rwanda</span> </b> <img class="icon" src="img/bus0.jpg"> <b><span class="place" id="destination-js">Nairobi, Kenya</span> </b>
+          <div class="price-container"><span id="price-js"><b>RWF 3500</b></span></div>
+        </div>
+      <div>
+         <span id="dap-date-js" class="dep-date">Wed, 11/20</span>
+      </div>
+      <div class="bus">
+          <span id="bus-name-js" class="bus-name">Kigali Coach</span>
+       </div>
+       <div class="view-trip">
+        <a href="#"><p>View Trip</p></a>
+       </div>
+      </div>
+    </div>
+    <div class="column-trip">
+        <div class="card-trip">
+  
+        <div class="location-info">
+            <b><span class="place" id="departure-js">Kigali, Rwanda</span> </b> <img class="icon" src="img/bus0.jpg"> <b><span class="place" id="destination-js">Nairobi, Kenya</span> </b>
+            <div class="price-container"><span id="price-js"><b>RWF 3500</b></span></div>
+          </div>
+        <div>
+           <span id="dap-date-js" class="dep-date">Wed, 11/20</span>
+        </div>
+        <div class="bus">
+            <span id="bus-name-js" class="bus-name">Kigali Coach</span>
+         </div>
+         <div class="view-trip">
+          <a href="#"><p>View Trip</p></a>
+         </div>
+        </div>
+      </div>
+      <div class="column-trip">
+          <div class="card-trip">
+    
+          <div class="location-info">
+              <b><span class="place" id="departure-js">Kigali, Rwanda</span> </b> <img class="icon" src="img/bus0.jpg"> <b><span class="place" id="destination-js">Nairobi, Kenya</span> </b>
+              <div class="price-container"><span id="price-js"><b>RWF 3500</b></span></div>
+            </div>
+          <div>
+             <span id="dap-date-js" class="dep-date">Wed, 11/20</span>
+          </div>
+          <div class="bus">
+              <span id="bus-name-js" class="bus-name">Kigali Coach</span>
+           </div>
+           <div class="view-trip">
+            <a href="#"><p>View Trip</p></a>
+           </div>
+          </div>
+        </div>
+        <div class="column-trip">
+            <div class="card-trip">
+      
+            <div class="location-info">
+                <b><span class="place" id="departure-js">Kigali, Rwanda</span> </b> <img class="icon" src="img/bus0.jpg"> <b><span class="place" id="destination-js">Nairobi, Kenya</span> </b>
+                <div class="price-container"><span id="price-js"><b>RWF 3500</b></span></div>
+              </div>
+            <div>
+               <span id="dap-date-js" class="dep-date">Wed, 11/20</span>
+            </div>
+            <div class="bus">
+                <span id="bus-name-js" class="bus-name">Kigali Coach</span>
+             </div>
+             <div class="view-trip">
+              <a href="#"><p>View Trip</p></a>
+             </div>
+            </div>
+          </div>
+  </div>
+  
+
+<!-- Dialog Box -->
+<div id="dialogbox" class="modal">
+
+        <!-- Dialog content -->
+        <div class="modal-content">
+                <div class="modal-header">
+                        <span class="close" onclick="closeDialog()">×</span>
+                        <h2>WayFarer</h2>
+                      </div>
+                      <div class="modal-body">
+          <span class="dialog-content dialog-content-js"></span>
+        </div>
+        </div>
+      
+      </div>
+
+<div class="footer">
+    <p id="pd">©2019 All Right reserved</p>
+</div>
+
+</body>
+</body>
+</html>
