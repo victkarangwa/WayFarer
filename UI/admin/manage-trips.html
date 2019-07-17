@@ -447,7 +447,62 @@
 </div>   
 </div>
  <!-- View a Specific trip -->
+ <div class="modal-view">
+    <div class="create-trip-modal create-trip-modal-js">
+        <form class="custom-form">
+        <h2 class="most-title">Kigali-Rubavu Trip<label class="closeDialog" style="float: right" onclick="closeModalView()">&times;</label></h2>
+       <table class="custom-table">
+         <tr>
+           <th>Trip Id</th>
+           <td id="viewId" >KGL17RB</td>
+         </tr>
+         <tr>
+            <th>Trip Origin</th>
+            <td id="viewTripOrigin" >Kigali</td>
+          </tr>
+          <tr>
+              <th>Trip Destination</th>
+              <td id="viewTripDest" >Rubavu</td>
+            </tr>
+            <tr>
+                <th>Trip Time</th>
+                <td id="viewTripTime" >06:00 AM</td>
+              </tr>
+              <tr>
+                  <th>Trip Date</th>
+                  <td id="viewTripDate" >11th May 2019</td>
+                </tr>
+                <tr>
+                    <th>Bus Seats</th>
+                    <td id="viewTripSeats" >40 Available</td>
+                  </tr>
+            
+                    <tr>
+                        <th>Bus Licence N.</th>
+                        <td id="viewPlate" >RAE 501 A</td>
+                      </tr>
+                      <tr>
+                          <th>Trip Fare</th>
+                          <td id="viewTripFare" >Rwf 3500</td>
+                        </tr>
+                        <tr>
+                          <th>Trip Status</th>
+                          <td id="viewTripSatus" >Canceled</td>
+                        </tr>
+                        <tr>
+                          <td> <input type="button" class="custom-btn" value="Cancel Trip" onclick="dialogbox('Are you sure you want to cancel this trip?')"/></td>
+                          <td><input type="button" class="custom-btn" value="Reserve a Seat" onclick="bookTrip()"/></td>
+                        </tr>
+       </table>
 
+        
+        
+             
+            
+          
+        </form>
+</div>   
+</div>
 </div>
 <!-- ############################### -->
 
