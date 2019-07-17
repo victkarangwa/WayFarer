@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <!-- Metadata -->
+<meta name="description" content="Public bus transportation booking service">
+<meta name="author" content="Victor Karangwa">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Styles -->
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <!-- Javascript  -->
+ <script type="text/javascript" src="js/scripts.js"></script>
+</head>
+<body>
+    <div class="mobnav">
+        <span class="mob-menu-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <div class="mob-logo">
+        <img class="main-logo" src="img/logo.png">
+      </div>
+      </div>
+          </div>
+      
+          <nav class="navbar">
+              <ul class="topnav">
+                  <li class="k"><a class="menulink active" href="signin.html">Login</a>
+
+                    <li><a class="menulink" href="about.html">About</a></li>
+                    <li><a class="menulink" href="contact.html">Contact</a></li>
+                    <li><a class="menulink" href="view_booking.html">Bookings</a></li>
+                    <li><a class="menulink" href="view_trips.html">Trips</a></li>
+                    <li><a class="menulink" href="index.html">Home</a></li>
+                    <img class="main-logo" src="img/logo.png">
+                  </ul>
+                  
+              
+    </nav>
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            
+            <a href="index.html">Home</a>
+            <hr class="menu-separtor">
+            <a href="view_trips.html">Trips</a>
+            <hr class="menu-separtor">
+            <a href="view_booking.html">Bookings</a>
+            <hr class="menu-separtor">
+            <a href="contact.html">Contact</a>
+            <hr class="menu-separtor">
+            <a href="about.html">About</a>
+            <hr class="menu-separtor">
+            <a class="active" href="signin.html">Login</a>
+            <hr class="menu-separtor">
+          </div>
+      
+         
+<!-- ############################### -->
+<div class="centered-form">
+        <form >
+          <h2>LOGIN</h2>
+          <input type="text" placeholder="First Name" id="fname" class="form-input txtb" required>
+          <input type="text" placeholder="Last Name" id="lname" class="form-input txtb" required>
+          <input type="text" placeholder="Email" id="email" class="form-input txtb" required>
+          <input type="text" placeholder="Username" id="email" class="form-input txtb" required>
+          <input type="password" placeholder="Password" class="form-input txtb"id="pswd" required>
+          <input type="password" placeholder="Confirm Password" class="form-input txtb"id="pswd" required>
+          <input type="submit" value="Signin" class="btn form-input btn-js" onclick="check()" >
+
+          <a class="link" href="signin.html">Already have account ?</a>
+        </form>
+      </div>
+<!-- ################################ -->
+<!-- Dialog Box -->
+<div id="dialogbox" class="modal">
+
+        <!-- Dialog content -->
+        <div class="modal-content">
+                <div class="modal-header">
+                        <span class="close" onclick="closeDialog()">&times;</span>
+                        <h2>Modal Header</h2>
+                      </div>
+                      <div class="modal-body">
+          <span class="dialog-content dialog-content-js"></span>
+        </div>
+        </div>
+      
+      </div>
+</body>
+<div class="footer">
+    <p id="pd">&copy;2019 All Right reserved</p>
+</div>
+
+</html>
