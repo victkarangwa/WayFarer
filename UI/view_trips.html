@@ -98,7 +98,7 @@
                <td>60 Seats</td>
                <td>RAC 521 D</td>
                <td>RWF 3500</td>
-             
+              <!-- User can view a specific trip by clicking on the Eye icon and see all details regarding the trip -->
                <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="img/view.png"/></td>
                      </tr>
              <tr>
@@ -169,42 +169,43 @@
         <form class="custom-form">
         <h2 class="most-title"><!--<img class="img-icon" src="img/trip_icon.png"/>-->Kigali-Rubavu Trip<label class="closeDialog" style="float: right" onclick="closeModalView()">&times;</label></h2>
        <table class="custom-table">
-         <tr>
-           <th>Trip Id</th>
-           <td id="viewId" >KGL17RB</td>
-         </tr>
-         <tr>
-            <th>Trip Name</th>
-            <td id="viewName" >Kigali-Rubavu</td>
-          </tr>
           <tr>
-              <th>Trip Departure</th>
-              <td id="viewDeparture" >Kigali</td>
+              <th>Trip Id</th>
+              <td id="viewId" >KGL17RB</td>
             </tr>
-            <tr>
-                <th>Trip Time</th>
-                <td id="viewTime" >06:00 AM</td>
-              </tr>
-              <tr>
-                  <th>Trip Date</th>
-                  <td id="viewDate" >11th May 2019</td>
-                </tr>
-                <tr>
-                    <th>Bus Seats</th>
-                    <td id="viewSeats" >40 Available</td>
-                  </tr>
-                  <tr>
-                      <th>Trip Bus</th>
-                      <td id="viewBus" >Kigali Coach</td>
-                    </tr>
-                    <tr>
-                        <th>Bus Plate N.</th>
-                        <td id="viewPlate" >RAE 501 A</td>
-                      </tr>
-                      <tr>
-                          <th>Trip Fare</th>
-                          <td id="viewFare" >Rwf 3500</td>
-                        </tr>
+    
+                 <tr>
+                     <th>Trip Date</th>
+                     <td id="viewDate" >11th May 2019</td>
+                   </tr>
+                   <tr>
+                       
+                 <tr>
+                       <th>Trip Time</th>
+                       <td id="viewTIme" >06L00 AM</td>
+                     </tr>
+                     <tr>
+                           <th>Origin</th>
+                           <td id="viewOrgin" >Kigali</td>
+                         </tr>
+                         <tr>
+                               <th>Destination</th>
+                               <td id="viewDestination" >Rubavu</td>
+                             </tr>
+                   <tr>
+                       <th>Seating Capacity</th>
+                       <td id="viewSeats" >40</td>
+                     </tr>
+                   
+                    
+                       <tr>
+                           <th>Bus Licence Number</th>
+                           <td id="viewPlate" >RAE 501 A</td>
+                         </tr>
+                         <tr>
+                             <th>Trip Fare</th>
+                             <td id="viewFare" >Rwf 3500</td>
+                           </tr>
                      
           
                        
@@ -225,12 +226,13 @@
       </div>
       
       <!-- ################################ -->
-      <!-- Dialog Box -->
+      <!-- Dialog Box to provide a feedback to the user -->
       <div id="dialogbox" class="modal">
       
-              <!-- Dialog content -->
+              <!-- Dialogbox  content -->
               <div class="modal-content">
                       <div class="modal-header">
+                        <!-- Cross icon ,when clicked it closes the dialog box -->
                               <span class="close" onclick="closeDialog()">&times;</span>
                               <h2>Way Farer</h2>
                             </div>
