@@ -1,14 +1,19 @@
 import express from 'express';
 import faker from 'faker';
 import users from './users';
+import config from './config/default';
 
 const app = express();
 
+const { port } = config;
+
+app.get('/', (req, res) => {
+  res.status(200).send('Welcome to the WayFarer APIs');
+});
+
 app.use('/api/v1/users', users);
-const port = process.env.PORT || 3030;
-app.listen(port, () => {
+app.listen(port, (req, res) => {
   console.log(`Listening on port ${port}`);
-  console.log('Job: ', faker.name.firstName);
 });
 
 export default app;

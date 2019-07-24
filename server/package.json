@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc --reporter=text mocha --require @babel/register ",
-    "test:coveralls":"istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test:coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "babel-node": "babel-node --presets=@babel/preset-env",
     "start": "nodemon  --exec babel-node index.js",
     "build": "babel lib -d dist",
@@ -14,16 +14,17 @@
   "author": "Victor KARANGWA",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "joi": "^14.3.1",
-    "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.14",
-    "node-datetime": "^2.1.2",
     "@hapi/joi": "^15.1.0",
     "body-parser": "^1.19.0",
     "config": "^3.2.1",
+    "dotenv": "^8.0.0",
     "esm": "^3.2.25",
-    "faker": "^4.1.0"
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.14",
+    "node-datetime": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
