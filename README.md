@@ -32,12 +32,11 @@ The project is composed of two different parts:
 ### Installing
 
 1.For running the api
-```
+
    1. First download and install [Node JS](https://nodejs.org/en/download/)
    2. Download and install [Postman](https://www.getpostman.com/downloads/)
    3. Clone the project. [WayFarer](https://github.com/victorkarangwa4/WayFarer/tree/develop)
    4. Run `npm install` (`sudo apt install` for linux users) command for installing all project dependencies
-```
 
 ## Running the tests
 
