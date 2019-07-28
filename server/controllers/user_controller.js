@@ -25,6 +25,26 @@ class UserController {
       }
       return res.status(400).send({ status: 'error', error: `${result.error.details[0].message}` });
     };
+
+    signIn = (req, res) => {
+      // validation of Request payload
+      // using JOI npm
+      const schema = {
+        email: Joi.string().email().required(),
+        password: Joi.required(),
+      };
+      const result = Joi.validate(req.body, schema);
+      if (result.error == null) {
+      // Everything is okay
+        // We fire up User model to login user
+        const user = User.login(req.body);
+        if (user.status === 'success') {
+          return res.status(200).send(user);
+        }
+        return res.status(401).send(user);
+      }
+      return res.status(400).send({ status: 'error', error: `${result.error.details[0].message}` });
+    };
 }
 
 

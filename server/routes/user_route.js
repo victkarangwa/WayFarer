@@ -8,4 +8,7 @@ const router = express.Router();
 const user_controller = new UserController();
 router.post('/signup', user_controller.signUp);
 
+// Login user endpoint
+router.post('/signin', user_controller.signIn);
+
 export default router;
