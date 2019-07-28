@@ -4,3 +4,4 @@ node_modules/
 coverage.html
 package-lock.json
 coverage/
+swagger-editor-doc/

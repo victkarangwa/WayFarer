@@ -26,14 +26,45 @@ class User{
     return newUser;
     };
 
+    login = (payload)=>{
+    //check if user email and password exists
+    //in our users array
+    
+    const user = this.users.find(user => (user.email === payload.email)&&((user.password === payload.password)));
+    if(!user) {
+      return {'status':'error','error':
+       'email or password is incorrect!.'};  
+    }else{
+        
+     let result = {  
+       token: this.generateAuthToken(user.id,user.is_admin), 
+       first_name: user.first_name ,
+       last_name: user.last_name, 
+       email: user.email
+     };
+      result = {'status':'success','data': result};
+      
+     return result;
+    }  
+    };
+
     isEmailTaken = email => {
         return this.users.find(u => u.email === email);
     };
- 
+    
+    isUserExist = user_id =>{
+      return this.users.find(u => u.id === user_id);
+    };
+
     generateAuthToken = (id,admin)=>{
         const token  = jwt.sign({id: id,is_admin:admin},'secretKey');
         return token;
      };
+     //return a certain user basing on his or id
+     grabTripCreatorDetail = user_id =>{
+      const user = this.users.find(u => u.id === parseInt(user_id));
+      return user;
+     }
 
 }
 
