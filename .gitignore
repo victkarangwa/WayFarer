@@ -5,3 +5,7 @@ coverage.html
 package-lock.json
 coverage/
 swagger-editor-doc/
+
+# Swagger editor
+api/
+public/
