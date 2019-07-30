@@ -1,0 +1,143 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "description": "WayFarer is a public transportation service",
+  "version": "v1",
+  "title": "WayFarer API Docs",
+  "termsOfService": "http://swagger.io/terms/",
+  "contact": {
+   "email": "victorkarangwa4@gmail.com"
+  },
+  "license": {
+   "name": "MIT",
+   "url": "https://github.com/victorkarangwa4/WayFarer/blob/develop/LICENCE.md"
+  }
+ },
+ "host": "127.0.0.1:5000",
+ "basePath": "/api/v1/",
+ "tags": [
+  {
+   "name": "user",
+   "description": "User Authentication API",
+   "externalDocs": {
+    "description": "Find out more",
+    "url": "https://github.com/victorkarangwa4/WayFarer/tree"
+   }
+  }
+ ],
+ "schemes": [
+  "http"
+ ],
+ "paths": {
+  "/auth/signup": {
+   "post": {
+    "tags": [
+     "user"
+    ],
+    "summary": "Create user account",
+    "description": "",
+    "operationId": "signup",
+    "consumes": [
+     "application/json",
+     "application/xml"
+    ],
+    "produces": [
+     "application/xml",
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "in": "body",
+      "name": "body",
+      "description": "User object that's needed to create new account",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/User_signup"
+      }
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Account Created Successfully"
+     },
+     "409": {
+      "description": "User already exist"
+     }
+    }
+   }
+  },
+  "/auth/signin": {
+   "post": {
+    "tags": [
+     "user"
+    ],
+    "summary": "signin user",
+    "description": "",
+    "operationId": "signin",
+    "consumes": [
+     "application/json",
+     "application/xml"
+    ],
+    "produces": [
+     "application/xml",
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "in": "body",
+      "name": "body",
+      "description": "User object that's needed to create new account",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/User_signin"
+      }
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Account Created Successfully"
+     },
+     "409": {
+      "description": "User already exist"
+     }
+    }
+   }
+  }
+ },
+ "definitions": {
+  "User_signup": {
+   "type": "object",
+   "properties": {
+    "first_name": {
+     "type": "string"
+    },
+    "last_name": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    }
+   },
+   "xml": {
+    "name": "User Signup"
+   }
+  },
+  "User_signin": {
+   "type": "object",
+   "properties": {
+    "email": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    }
+   },
+   "xml": {
+    "name": "User Signup"
+   }
+  }
+ }
+}
