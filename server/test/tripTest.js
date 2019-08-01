@@ -127,6 +127,7 @@ describe('PATCH admin provide wrong id, api/v1/trips/<:trip-id>/cancel', () => {
         expect(res.body.error).to.equal('Such trip is not found!');
         expect(res.status).to.equal(status.NOT_FOUND);
         // expect(res.body.data.token).to.be.a('string');
+
         done();
       });
   });
@@ -169,7 +170,7 @@ describe('GET view a specific trip, api/v1/trips/<:trip-id>', () => {
 });
 
 describe('GET view an invalid trip, api/v1/trips/<:trip-id>', () => {
-  it('should return a specific trip', (done) => {
+  it('should return an error', (done) => {
     chai.request(app)
       .get('/api/v1/trips/1025')
       .set('x-auth-token', NonAdmintoken)
