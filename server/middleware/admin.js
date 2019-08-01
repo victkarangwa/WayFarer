@@ -11,7 +11,7 @@ const admin = (req, res, next) => {
     // and find if that id exists in our users[](later on would be)\
     // because we can not trust that user still exists
     if (!User.isUserExist(decoded_jwt.id)) {
-      return res.status(404).send({ status: 'error', error: 'The User associated with this token was banned or deleted!.' });
+      return res.status(404).send({ status: 'error', error: 'The User associated with this token doesn\'t exist.' });
     }
     // check again if user is admin to be allowed to perform
     // [create a trip, cancel a trip, see all bookings]

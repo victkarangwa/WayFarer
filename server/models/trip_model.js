@@ -53,8 +53,6 @@ class Trip {
      }
    };
 
-   // checks if atrip is currently available in trips[]
-      isTripExist = trip_id => this.trips.find(trip => trip.trip_id === parseInt(trip_id, 10));
 
       getAllTrip = () => this.trips;
 
