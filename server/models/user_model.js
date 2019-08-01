@@ -1,9 +1,19 @@
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 
+
 class User{
     constructor(){
-        this.users = [];
+        this.users = [
+          {
+            id:7,
+            first_name: 'victor' ,
+            last_name: 'karangwa', 
+            email: 'victor@gmail.com',
+            password: 'payload.password',
+            is_admin:true
+          }
+        ];
     }
 
     create = (payload) =>{

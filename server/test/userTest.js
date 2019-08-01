@@ -18,7 +18,7 @@ chai.use(chaiHttp);
 const fname = users[0].first_name;
 const lname = users[0].last_name;
 const { email } = users[0];
-
+let token;
 
 // ############ SIGNUP TEST ############
 
@@ -34,7 +34,6 @@ describe('POST sign up successfully, api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(status.RESOURCE_CREATED);
         expect(res.body.status).to.equal('success');
-        expect(res.body.data.id).to.equal(1);
         expect(res.body.data.token).to.be.a('string');
         expect(res.body.data.first_name).to.equal(fname);
         expect(res.body.data.last_name).to.equal(lname);
