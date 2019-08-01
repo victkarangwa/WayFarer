@@ -43,6 +43,25 @@ describe('POST Both Admin and Users can see all trips, api/v1/trips', () => {
       });
   });
 });
+
+// Test to create a new trip
+
+describe('POST Admin can create a trip, api/v1/trips', () => {
+  it('should create a new trip successfully', (done) => {
+    chai.request(app)
+      .post('/api/v1/trips')
+      .set('x-auth-token', token)
+      .set('Accept', 'application/json')
+      .send(trip[0])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal('success');
+        expect(res.status).to.equal(status.RESOURCE_CREATED);
+        // expect(res.body.data.token).to.be.a('string');
+        done();
+      });
+  });
+});
 describe('POST user with invalid token, api/v1/trips', () => {
   it('should return all trips', (done) => {
     chai.request(app)
