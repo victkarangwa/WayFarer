@@ -37,12 +37,12 @@ class UserController {
       if (result.error == null) {
       // Everything is okay
         // We fire up User model to login user
-        const user = User.login(req.body)
+        const user = User.login(req.body);
         if (user.status === 'success') {
-          res.set('x-auth-token',user.data.token);
+          res.set('x-auth-token', user.data.token);
           return res.status(200).send(user);
         }
-        
+
         return res.status(401).send(user);
       }
       return res.status(400).send({ status: 'error', error: `${result.error.details[0].message}` });
