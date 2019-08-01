@@ -54,9 +54,18 @@ class Trip {
    };
 
    // checks if atrip is currently available in trips[]
-      isTripExist = trip_id => this.trips.find(trip => trip.trip_id === parseInt(String, trip_id));
+      isTripExist = trip_id => this.trips.find(trip => trip.trip_id === parseInt(trip_id, 10));
 
       getAllTrip = () => this.trips;
+
+      cancel = (res, data) => {
+        // check if trip exists in our trips array
+        const trip = this.trips.find(trip => trip.trip_id === parseInt(data.id, 10));
+        if (!trip) return res.status(404).send({ status: 'error', error: 'Such trip is not found!' });
+        // otherwise go ahead mark it as cancelled
+        trip.status = 'cancelled';
+        return trip;
+      };
 }
 
 export default new Trip();

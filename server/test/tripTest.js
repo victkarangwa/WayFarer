@@ -59,3 +59,56 @@ describe('POST Admin can create a trip, api/v1/trips', () => {
       });
   });
 });
+
+// Test to cancel a specific trip
+
+describe('PATCH Admin can cancel a trip, api/v1/trips', () => {
+  it('should create a new trip successfully', (done) => {
+    chai.request(app)
+      .patch('/api/v1/trips/1/cancel')
+      .set('x-auth-token', token)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal('success');
+        expect(res.body.data.message).to.equal('Trip cancelled successfully');
+        expect(res.status).to.equal(status.RESOURCE_CREATED);
+        // expect(res.body.data.token).to.be.a('string');
+        done();
+      });
+  });
+});
+
+describe('PATCH params incompleteness, api/v1/trips', () => {
+  it('should create a new trip successfully', (done) => {
+    chai.request(app)
+      .patch('/api/v1/trips/1/cance')
+      .set('x-auth-token', token)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal('error');
+        expect(res.body.error).to.equal('Please supply :cancel param!');
+        expect(res.status).to.equal(status.BAD_REQUEST);
+        // expect(res.body.data.token).to.be.a('string');
+        done();
+      });
+  });
+});
+
+describe('PATCH admin provide wrong id, api/v1/trips', () => {
+  it('should create a new trip successfully', (done) => {
+    chai.request(app)
+      .patch('/api/v1/trips/9/cancel')
+      .set('x-auth-token', token)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal('error');
+        expect(res.body.error).to.equal('Such trip is not found!');
+        expect(res.status).to.equal(status.NOT_FOUND);
+        // expect(res.body.data.token).to.be.a('string');
+        done();
+      });
+  });
+});

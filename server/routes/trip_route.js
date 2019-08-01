@@ -13,4 +13,8 @@ router.post('/', admin, trip_controller.createTrip);
 // Both admin and users can see all trips
 router.get('/', auth, trip_controller.findAllTrip);
 
+// Cancel a trip: only admin can be able to cancel
+// a certain trip
+router.patch('/:id/:cancel', admin, trip_controller.cancelTrip);
+
 export default router;

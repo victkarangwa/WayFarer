@@ -20,6 +20,7 @@ class TripController {
     return res.status(400).send({ status: 'error', error: `${result.error.details[0].message}` });
   };
 
+  // Find all available trip
     findAllTrip = (req, res) => {
       const trips = Trip.getAllTrip();
       if (trips.length === 0) {
@@ -27,6 +28,16 @@ class TripController {
       }
       return res.status(200).send({ status: 'success', data: trips });
     };
+
+    // Cancela specific trip
+    cancelTrip = (req, res) => {
+      // console.log(req.params.cancel);
+      if (!(req.params.cancel.trim() === 'cancel')) {
+        return res.status(400).send({ status: 'error', error: 'Please supply :cancel param!' });
+      }
+      Trip.cancel(res, req.params);
+      return res.status(201).send({ status: 'success', data: { message: 'Trip cancelled successfully' } });
+    }
 }
 
 export default TripController;

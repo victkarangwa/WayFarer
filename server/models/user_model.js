@@ -72,11 +72,11 @@ class User {
       return token;
     };
 
-     // return a certain user basing on his or id
-     grabTripCreatorDetail = (user_id) => {
-       const user = this.users.find(u => u.id === parseInt(String, user_id));
-       return user;
-     }
+  // return a certain user basing on his or id
+  //  grabTripCreatorDetail = (user_id) => {
+  //    const user = this.users.find(u => u.id === parseInt(user_id, 10));
+  //    return user;
+  //  }
 }
 
 export default new User();
