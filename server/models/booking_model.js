@@ -8,14 +8,7 @@ import status from '../helpers/StatusCode';
 class Booking {
   constructor() {
     this.bookings = [];
-    this.tempBookings = [{
-      booking_id: 1,
-      bus_license_number: 'RAC 456 Y',
-      trip_date: 1205019,
-      first_name: 'Kasoro',
-      last_name: 'Enye',
-      user_email: 'me@gmail.com',
-    }];
+    this.tempBookings = [];
   }
 
     reserveSeat = (res, data, token) => {
