@@ -3,7 +3,7 @@
  "info": {
   "description": "WayFarer is a public transportation service",
   "version": "v1",
-  "title": "WayFarer API Docs",
+  "title": "WayFarer APIs docs",
   "termsOfService": "http://swagger.io/terms/",
   "contact": {
    "email": "victorkarangwa4@gmail.com"
@@ -14,11 +14,19 @@
   }
  },
  "host": "127.0.0.1:5000",
- "basePath": "/api/v1/",
+ "basePath": "/api/v1",
  "tags": [
   {
    "name": "user",
-   "description": "User Authentication API",
+   "description": "User Authentication API"
+  },
+  {
+   "name": "Trip",
+   "description": "View, Cancel, Create trips"
+  },
+  {
+   "name": "Booking",
+   "description": "Create, view, cancel bookings",
    "externalDocs": {
     "description": "Find out more",
     "url": "https://github.com/victorkarangwa4/WayFarer/tree"
@@ -52,7 +60,7 @@
       "description": "User object that's needed to create new account",
       "required": true,
       "schema": {
-       "$ref": "#/definitions/User_signup"
+       "$ref": "#/definitions/signup"
       }
      }
     ],
@@ -89,7 +97,7 @@
       "description": "User object that's needed to create new account",
       "required": true,
       "schema": {
-       "$ref": "#/definitions/User_signin"
+       "$ref": "#/definitions/signin"
       }
      }
     ],
@@ -102,10 +110,262 @@
      }
     }
    }
+  },
+  "/trips": {
+   "post": {
+    "tags": [
+     "Trip"
+    ],
+    "summary": "Admin creates new trip",
+    "description": "",
+    "operationId": "create-trip",
+    "produces": [
+     "application/xml",
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "description": "The value to provide in the  header of API request"
+     },
+     {
+      "name": "Trip details",
+      "in": "body",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/trip"
+      }
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Trip created successfully"
+     },
+     "403": {
+      "description": "User not allowed to perform action"
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Trip"
+    ],
+    "summary": "Both admin and users can view all trips",
+    "description": "",
+    "operationId": "get-trips",
+    "consumes": [
+     "application/json",
+     "application/xml"
+    ],
+    "produces": [
+     "application/xml",
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "description": "The value to provide in the  header of API request",
+      "required": true
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Trips retried successfully"
+     },
+     "409": {
+      "description": "User already exist"
+     }
+    }
+   }
+  },
+  "/trips/{trip_id}/cancel": {
+   "patch": {
+    "tags": [
+     "Trip"
+    ],
+    "summary": "Admin cancel trip",
+    "description": "Admin is only allowed to cancel trip with given ID",
+    "parameters": [
+     {
+      "name": "x-auth-token",
+      "in": "header",
+      "description": "The user token",
+      "required": true
+     },
+     {
+      "name": "trip_id",
+      "in": "path",
+      "description": "trip id",
+      "required": true,
+      "type": "integer"
+     }
+    ],
+    "produces": [
+     "application/json"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success: trip cancelled successfully"
+     },
+     "400": {
+      "description": "Bad Error"
+     },
+     "401": {
+      "description": "Error: authentication error"
+     }
+    }
+   }
+  },
+  "/trips/{trip_id}": {
+   "get": {
+    "tags": [
+     "Trip"
+    ],
+    "summary": "Both Admin and Users can see a specific trip",
+    "description": "",
+    "operationId": "get-specific-trip",
+    "consumes": [
+     "application/json",
+     "application/xml"
+    ],
+    "produces": [
+     "application/xml",
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "description": "The value to provide in the  header of API request",
+      "required": true
+     },
+     {
+      "name": "trip_id",
+      "in": "path",
+      "description": "trip id",
+      "required": true,
+      "type": "integer"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "success:"
+     },
+     "409": {
+      "description": "User already exist"
+     }
+    }
+   }
+  },
+  "/bookings": {
+   "post": {
+    "tags": [
+     "Booking"
+    ],
+    "summary": "User creates a booking",
+    "description": "",
+    "operationId": "create-booking",
+    "produces": [
+     "application/xml",
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "description": "The value to provide in the  header of API request"
+     },
+     {
+      "name": "Trip details",
+      "in": "body",
+      "required": true,
+      "schema": {
+       "$ref": "#/definitions/booking"
+      }
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Booking created successfully"
+     },
+     "403": {
+      "description": "User not allowed to perform action"
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Booking"
+    ],
+    "summary": "View bookings",
+    "description": "An Admin can see all bookings, while user can see all of his/her bookings.",
+    "operationId": "view-booking",
+    "produces": [
+     "application/xml",
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "description": "The value to provide in the  header of API request"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success: booking retrieved successfully"
+     },
+     "403": {
+      "description": "User not allowed to perform action"
+     }
+    }
+   }
+  },
+  "/bookings/{trip_id}": {
+   "delete": {
+    "tags": [
+     "Booking"
+    ],
+    "summary": "User delete a booking",
+    "description": "",
+    "operationId": "delete-booking",
+    "produces": [
+     "application/xml",
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "name": "x-auth-token",
+      "in": "header",
+      "type": "string",
+      "description": "The value to provide in the  header of API request"
+     },
+     {
+      "name": "trip_id",
+      "in": "path",
+      "required": true
+     }
+    ],
+    "responses": {
+     "201": {
+      "description": "Booking created successfully"
+     },
+     "403": {
+      "description": "User not allowed to perform action"
+     }
+    }
+   }
   }
  },
  "definitions": {
-  "User_signup": {
+  "signup": {
    "type": "object",
    "properties": {
     "first_name": {
@@ -119,13 +379,16 @@
     },
     "password": {
      "type": "string"
+    },
+    "is_admin": {
+     "type": "string"
     }
    },
    "xml": {
     "name": "User Signup"
    }
   },
-  "User_signin": {
+  "signin": {
    "type": "object",
    "properties": {
     "email": {
@@ -137,6 +400,46 @@
    },
    "xml": {
     "name": "User Signup"
+   }
+  },
+  "trip": {
+   "type": "object",
+   "properties": {
+    "seating_capacity": {
+     "type": "integer"
+    },
+    "bus_license_number": {
+     "type": "string"
+    },
+    "origin": {
+     "type": "string"
+    },
+    "destination": {
+     "type": "string"
+    },
+    "trip_date": {
+     "type": "string"
+    },
+    "fare": {
+     "type": "integer"
+    },
+    "status": {
+     "type": "integer"
+    }
+   },
+   "xml": {
+    "name": "Trip"
+   }
+  },
+  "booking": {
+   "type": "object",
+   "properties": {
+    "trip_id": {
+     "type": "integer"
+    }
+   },
+   "xml": {
+    "name": "Trip"
    }
   }
  }
