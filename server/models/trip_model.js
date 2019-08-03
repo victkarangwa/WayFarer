@@ -1,10 +1,4 @@
-<<<<<<< ft-user-booking-167669168
 import userInfo from '../helpers/userInfo';
-=======
-
-import jwt from 'jsonwebtoken';
-
->>>>>>> develop
 
 class Trip {
   constructor() {
@@ -45,28 +39,10 @@ class Trip {
       return newTrip;
     };
 
-<<<<<<< ft-user-booking-167669168
     getTripById = (id) => {
       const trip = this.trips.find(Tid => Tid.trip_id === parseInt(id, 10));
       return trip;
     };
-=======
-   getUserId = (res, token) => {
-     // decode token for the sake of picking user_id
-     // to use in setting trip owner.
-     try {
-       const decoded = jwt.verify(token, 'secretKey');
-       return decoded.id;
-     } catch (error) {
-       return res.status(400).send({ status: 'error', error: error.message });
-     }
-   };
-
-   getTripById = (id) => {
-     const trip = this.trips.find(tripId => tripId.trip_id === parseInt(id, 10));
-     return trip;
-   };
->>>>>>> develop
 
       getAllTrip = () => this.trips;
 
