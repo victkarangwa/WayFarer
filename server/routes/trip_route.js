@@ -10,6 +10,9 @@ const router = express.Router();
 const trip_controller = new TripController();
 router.post('/', admin, trip_controller.createTrip);
 
+// Get a specific trip: admins + users
+router.get('/:id', auth, trip_controller.findOneTrip);
+
 // Both admin and users can see all trips
 router.get('/', auth, trip_controller.findAllTrip);
 

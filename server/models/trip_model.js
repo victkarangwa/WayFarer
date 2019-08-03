@@ -1,6 +1,5 @@
 
 import jwt from 'jsonwebtoken';
-import trips from './trips';
 
 
 class Trip {
@@ -53,12 +52,16 @@ class Trip {
      }
    };
 
+   getTripById = (id) => {
+     const trip = this.trips.find(tripId => tripId.trip_id === parseInt(id, 10));
+     return trip;
+   };
 
       getAllTrip = () => this.trips;
 
       cancel = (res, data) => {
         // check if trip exists in our trips array
-        const trip = this.trips.find(trip => trip.trip_id === parseInt(data.id, 10));
+        const trip = this.trips.find(tripId => tripId.trip_id === parseInt(data.id, 10));
         if (!trip) return res.status(404).send({ status: 'error', error: 'Such trip is not found!' });
         // otherwise go ahead mark it as cancelled
         trip.status = 'cancelled';

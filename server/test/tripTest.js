@@ -99,7 +99,7 @@ describe('POST Admin can create a trip, api/v1/trips', () => {
 
 // Test to cancel a specific trip
 
-describe('PATCH Admin can cancel a trip, api/v1/trips', () => {
+describe('PATCH Admin can cancel a trip, api/v1/trips/<:trip-id>/cancel', () => {
   it('should create a new trip successfully', (done) => {
     chai.request(app)
       .patch('/api/v1/trips/1/cancel')
@@ -116,7 +116,7 @@ describe('PATCH Admin can cancel a trip, api/v1/trips', () => {
   });
 });
 
-describe('PATCH params incompleteness, api/v1/trips', () => {
+describe('PATCH params incompleteness, api/v1/trips/<:trip-id>/cancel', () => {
   it('should create a new trip successfully', (done) => {
     chai.request(app)
       .patch('/api/v1/trips/1/cance')
@@ -134,7 +134,7 @@ describe('PATCH params incompleteness, api/v1/trips', () => {
   });
 });
 
-describe('PATCH admin provide wrong id, api/v1/trips', () => {
+describe('PATCH admin provide wrong id, api/v1/trips/<:trip-id>/cancel', () => {
   it('should create a new trip successfully', (done) => {
     chai.request(app)
       .patch('/api/v1/trips/9/cancel')
@@ -146,12 +146,13 @@ describe('PATCH admin provide wrong id, api/v1/trips', () => {
         expect(res.body.error).to.equal('Such trip is not found!');
         expect(res.status).to.equal(status.NOT_FOUND);
         // expect(res.body.data.token).to.be.a('string');
+
         done();
       });
   });
 });
 
-describe('PATCH user without admin previlege, api/v1/trips', () => {
+describe('PATCH user without admin previlege, api/v1/trips/<:trip-id/cancel>', () => {
   it('should return forbidden status code', (done) => {
     chai.request(app)
       .patch('/api/v1/trips/1/cancel')
@@ -168,4 +169,38 @@ describe('PATCH user without admin previlege, api/v1/trips', () => {
   });
 });
 
-// Test for JWT
+describe('GET view a specific trip, api/v1/trips/<:trip-id>', () => {
+  it('should return a specific trip', (done) => {
+    chai.request(app)
+      .get('/api/v1/trips/1')
+      .set('x-auth-token', NonAdmintoken)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal('success');
+        expect(res.body.data.trip_id).to.equal(1);
+        expect(res.body.data.origin).to.equal('Kigali');
+        expect(res.body.data.seating_capacity).to.equal(45);
+        expect(res.status).to.equal(status.REQUEST_SUCCEDED);
+        // expect(res.body.data.token).to.be.a('string');
+        done();
+      });
+  });
+});
+
+describe('GET view an invalid trip, api/v1/trips/<:trip-id>', () => {
+  it('should return an error', (done) => {
+    chai.request(app)
+      .get('/api/v1/trips/1025')
+      .set('x-auth-token', NonAdmintoken)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal('error');
+        expect(res.body.error).to.equal('Such kind of trip is not found!');
+        expect(res.status).to.equal(status.NOT_FOUND);
+        // expect(res.body.data.token).to.be.a('string');
+        done();
+      });
+  });
+});
