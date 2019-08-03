@@ -92,9 +92,11 @@ class Booking {
         }
       };
 
+
       // User can delete his / her own booking
     removeBooking = (res, id, token) => {
       // check if booking exists in bookings
+
       const booking = this.bookings.find(b => b.booking_id === parseInt(id, 10));
       if (!booking) return res.status(status.NOT_FOUND).send({ status: 'error', message: 'Booking is not found!' });
       // Before deleting check if he/ she is the owner of booking
