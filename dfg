@@ -1,0 +1,154 @@
+* [33m6ecb925[m[33m ([m[1;36mHEAD -> [m[1;32mft-view-specific-trip-167645925[m[33m, [m[1;31morigin/ft-view-specific-trip-167645925[m[33m)[m feat(update): admin / users can view a specific trip properly
+* [33m3d0f9bc[m feat: Both admin and users can view a specific trip
+*   [33m8a5c142[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m resolve merge conflict
+[32m|[m[33m\[m  
+[32m|[m * [33m2a62d34[m feat(admin-api): Admin can create a trip (#37)
+* [33m|[m [33m9d7cf6d[m Resolve merge conflict
+* [33m|[m [33mcd407ff[m Update unit test for admin
+* [33m|[m [33m5b34932[m feat(admin): Admin can cancel a trip
+* [33m|[m [33m8a7bf7f[m feat(admin-api): Admin can create a trip (#37)
+[33m|[m[33m/[m  
+*   [33m20687e1[m Merge pull request #36 from victorkarangwa4/ft-view-all-trips-api-167598236
+[34m|[m[35m\[m  
+[34m|[m * [33m3a554a5[m[33m ([m[1;31morigin/ft-view-all-trips-api-167598236[m[33m, [m[1;32mft-view-all-trips-api-167598236[m[33m)[m feat: Both admin and users can view all trips
+* [35m|[m   [33ma010975[m Merge pull request #35 from victorkarangwa4/ch-api-documentation-167597439
+[36m|[m[35m\[m [35m\[m  
+[36m|[m [35m|[m[35m/[m  
+[36m|[m * [33md32057f[m[33m ([m[1;31morigin/ch-api-documentation-167597439[m[33m, [m[1;32mch-api-documentation-167597439[m[33m)[m Update swagger api docs
+[36m|[m * [33m84e3495[m Update swagger api documentation
+* [1;31m|[m   [33mdf6e1fc[m Merge pull request #34 from victorkarangwa4/ch-api-documentation-167597439
+[1;32m|[m[1;31m\[m [1;31m\[m  
+[1;32m|[m [1;31m|[m[1;31m/[m  
+[1;32m|[m * [33m0701017[m  remove unwanted directory
+[1;32m|[m * [33mf046707[m chore(documentation): add swagger api documentation
+* [1;33m|[m   [33m89b014f[m Merge pull request #33 from victorkarangwa4/ft-user-signin-api-167556803
+[1;34m|[m[1;33m\[m [1;33m\[m  
+[1;34m|[m [1;33m|[m[1;33m/[m  
+[1;34m|[m * [33mde72044[m[33m ([m[1;31morigin/ft-user-signin-api-167556803[m[33m, [m[1;32mft-user-signin-api-167556803[m[33m)[m feat(signin): user can signin api [finishes #167556803]
+[1;34m|[m[1;34m/[m  
+*   [33mff85477[m[33m ([m[1;32mgh-pages[m[33m)[m Merge pull request #31 from victorkarangwa4/ch-folders-restructuring-167543755
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33ma696874[m[33m ([m[1;31morigin/ch-folders-restructuring-167543755[m[33m, [m[1;32mch-folders-restructuring-167543755[m[33m)[m chore: update the folder structure of the project
+* [31m|[m   [33m744f234[m Merge pull request #30 from victorkarangwa4/ch-project-licence-167541610
+[32m|[m[31m\[m [31m\[m  
+[32m|[m [31m|[m[31m/[m  
+[32m|[m * [33maf67cef[m[33m ([m[1;31morigin/ch-project-licence-167541610[m[33m, [m[1;32mch-project-licence-167541610[m[33m)[m chore: Update project licence
+[32m|[m * [33m22bf0ed[m chore: Add project llicence
+* [33m|[m   [33m4422fe8[m Merge pull request #29 from victorkarangwa4/ch-readme-file-167541095
+[34m|[m[33m\[m [33m\[m  
+[34m|[m [33m|[m[33m/[m  
+[34m|[m * [33m593a889[m[33m ([m[1;31morigin/ch-readme-file-167541095[m[33m, [m[1;32mch-readme-file-167541095[m[33m)[m chore(README): Updating README File
+[34m|[m * [33m7f3ecf1[m chore(README): Updating README file
+* [35m|[m   [33ma020fad[m Merge pull request #28 from victorkarangwa4/ch-integrate-codeclimate-167535487
+[36m|[m[35m\[m [35m\[m  
+[36m|[m [35m|[m[35m/[m  
+[36m|[m * [33mcc9aed3[m[33m ([m[1;31morigin/ch-integrate-codeclimate-167535487[m[33m, [m[1;32mch-integrate-codeclimate-167535487[m[33m)[m chore(code maintainabilty): visualizing the code quality
+[36m|[m * [33m43218b3[m fjjfjdfgn
+[36m|[m[36m/[m  
+* [33mb5c887d[m resolve Coverage badge issues
+* [33mcb2d2a5[m resolve Coverage badge issues
+*   [33m08a9228[m Add Coverage badge
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m8bec158[m Arrange README badges
+[1;32m|[m * [33m744d0a8[m Update README.md
+* [1;33m|[m [33m8d8d4a8[m Add Coverage badge
+[1;33m|[m[1;33m/[m  
+* [33m309cea9[m Add Coverage badge
+* [33maeee3e3[m Integrate Coveralls
+* [33m18762c0[m Add Travic CI
+*   [33m8ddd338[m Merge pull request #27 from victorkarangwa4/ft-user-signup-api-167534077
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33m6d4dc92[m[33m ([m[1;31morigin/ft-user-signup-api-167534077[m[33m, [m[1;32mft-user-signup-api-167534077[m[33m)[m  feat(signup): add user signup API
+[1;34m|[m * [33m9e11dce[m feat(signup): add user signup API
+[1;34m|[m[1;34m/[m  
+* [33m95574a1[m removed unstructured directories
+* [33m48e0c33[m  add new directory strucure
+* [33maff14dc[m  add new directory strucure
+*   [33m581b3e6[m Merge branch 'ch-travis-integration-167485859' into develop
+[1;36m|[m[31m\[m  
+[1;36m|[m *   [33m206760e[m[33m ([m[1;32mch-travis-integration-167485859[m[33m)[m Merge branch 'develop' into ch-travis-integration-167485859
+[1;36m|[m [32m|[m[1;36m\[m  
+[1;36m|[m [32m|[m[1;36m/[m  
+[1;36m|[m[1;36m/[m[32m|[m   
+* [32m|[m [33m034b6df[m  Remove unstructured directory
+[33m|[m * [33m142acb3[m[33m ([m[1;31morigin/ch-travis-integration-167485859[m[33m)[m  Remove unstructured directory
+[33m|[m * [33m774d7aa[m chore: integratiion of travis CI and covellars - add a .travis.yml file - integrate git repo to travis [start: #167485859]
+[33m|[m[33m/[m  
+* [33mf352328[m initial commit
+* [33m48bc929[m form background image update
+* [33ma537242[m feat(admin): Admin can create a trip
+*   [33mc66f95d[m Merge pull request #21 from victorkarangwa4/ft-user-can-signin-167161253
+[34m|[m[35m\[m  
+[34m|[m * [33m1558d1b[m[33m ([m[1;31morigin/ft-user-can-signin-167161253[m[33m, [m[1;32mft-user-can-signin-167161253[m[33m)[m User can signin
+* [35m|[m   [33m9d64b62[m Merge pull request #19 from victorkarangwa4/bg-admin-cant-manage-trips-167345851
+[36m|[m[1;31m\[m [35m\[m  
+[36m|[m * [35m|[m [33me44ad71[m[33m ([m[1;31morigin/bg-admin-cant-manage-trips-167345851[m[33m, [m[1;32mbg-admin-cant-manage-trips-167345851[m[33m)[m bug(admin): admin manage page elements are misplaced
+* [1;31m|[m [35m|[m   [33m5cb1b1f[m Merge pull request #17 from victorkarangwa4/ft-platform-service-page-167343784
+[1;32m|[m[1;31m\[m [1;31m\[m [35m\[m  
+[1;32m|[m [1;31m|[m[1;31m/[m [35m/[m  
+[1;32m|[m * [35m|[m [33ma19d15d[m[33m ([m[1;31morigin/ft-platform-service-page-167343784[m[33m, [m[1;32mft-platform-service-page-167343784[m[33m)[m feat: user can view all services
+* [1;33m|[m [35m|[m   [33m401a7f4[m Merge pull request #16 from victorkarangwa4/ft-user-contact-admin-167343465
+[1;34m|[m[1;33m\[m [1;33m\[m [35m\[m  
+[1;34m|[m [1;33m|[m[1;33m/[m [35m/[m  
+[1;34m|[m * [35m|[m [33m4ed1bea[m[33m ([m[1;31morigin/ft-user-contact-admin-167343465[m[33m, [m[1;32mft-user-contact-admin-167343465[m[33m)[m feat: user can contact the service provider
+* [1;35m|[m [35m|[m   [33mfa7ba74[m Merge pull request #15 from victorkarangwa4/ft-user-explore-trips-167343330
+[1;36m|[m[1;35m\[m [1;35m\[m [35m\[m  
+[1;36m|[m [1;35m|[m[1;35m/[m [35m/[m  
+[1;36m|[m * [35m|[m [33me4d0cf5[m[33m ([m[1;31morigin/ft-user-explore-trips-167343330[m[33m, [m[1;32mft-user-explore-trips-167343330[m[33m)[m feat(user): user can explorer trips at first view
+* [31m|[m [35m|[m   [33m26af93e[m Merge pull request #14 from victorkarangwa4/ft-admin-manage-account-167343248
+[32m|[m[31m\[m [31m\[m [35m\[m  
+[32m|[m [31m|[m[31m/[m [35m/[m  
+[32m|[m * [35m|[m [33m3e99674[m[33m ([m[1;31morigin/ft-admin-manage-account-167343248[m[33m, [m[1;32mft-admin-manage-account-167343248[m[33m)[m feat(admin): admin can manage his/her account
+* [33m|[m [35m|[m   [33mcd93b33[m Merge pull request #13 from victorkarangwa4/ft-admin-manage-users-167343138
+[34m|[m[33m\[m [33m\[m [35m\[m  
+[34m|[m [33m|[m[33m/[m [35m/[m  
+[34m|[m * [35m|[m [33m258ba83[m[33m ([m[1;31morigin/ft-admin-manage-users-167343138[m[33m, [m[1;32mft-admin-manage-users-167343138[m[33m)[m feat(admin): admin can manage all registered users
+* [35m|[m [35m|[m   [33m5c0d80f[m Merge pull request #12 from victorkarangwa4/ft-admin-view-trip-167342988
+[36m|[m[35m\[m [35m\[m [35m\[m  
+[36m|[m [35m|[m[35m/[m [35m/[m  
+[36m|[m * [35m|[m [33mc9d54da[m[33m ([m[1;31morigin/ft-admin-view-trip-167342988[m[33m, [m[1;32mft-admin-view-trip-167342988[m[33m)[m feat(admin): Admin can view a specific trip
+* [1;31m|[m [35m|[m   [33mfa659b0[m Merge pull request #11 from victorkarangwa4/ft-user-books-trip-167162415
+[1;32m|[m[1;31m\[m [1;31m\[m [35m\[m  
+[1;32m|[m [1;31m|[m[1;31m/[m [35m/[m  
+[1;32m|[m * [35m|[m [33md7ad8fe[m[33m ([m[1;31morigin/ft-user-books-trip-167162415[m[33m, [m[1;32mft-user-books-trip-167162415[m[33m)[m feat(user): User can make a booking on a specific trip
+* [1;33m|[m [35m|[m   [33mb9db6be[m Merge pull request #10 from victorkarangwa4/ft-admin-edit-trip-167342801
+[1;34m|[m[1;33m\[m [1;33m\[m [35m\[m  
+[1;34m|[m [1;33m|[m[1;33m/[m [35m/[m  
+[1;34m|[m * [35m|[m [33m90ced3f[m[33m ([m[1;31morigin/ft-admin-edit-trip-167342801[m[33m, [m[1;32mft-admin-edit-trip-167342801[m[33m)[m feat(admin): Admin can edit a specific trip
+* [1;35m|[m [35m|[m   [33mc4769f4[m Merge pull request #9 from victorkarangwa4/ft-admin-create-trip-167161951
+[1;36m|[m[1;35m\[m [1;35m\[m [35m\[m  
+[1;36m|[m [1;35m|[m[1;35m/[m [35m/[m  
+[1;36m|[m * [35m|[m [33m257d0d1[m[33m ([m[1;31morigin/ft-admin-create-trip-167161951[m[33m, [m[1;32mft-admin-create-trip-167161951[m[33m)[m feat(admin): Admin can create trip
+* [31m|[m [35m|[m   [33mdeb59fd[m Merge pull request #8 from victorkarangwa4/ft-user-delete-booking-167162843
+[32m|[m[31m\[m [31m\[m [35m\[m  
+[32m|[m [31m|[m[31m/[m [35m/[m  
+[32m|[m * [35m|[m [33m374ee3d[m[33m ([m[1;31morigin/ft-user-delete-booking-167162843[m[33m, [m[1;32mft-user-delete-booking-167162843[m[33m)[m feat(user): User can delete a specigic booking he made
+* [33m|[m [35m|[m   [33me293660[m Merge pull request #7 from victorkarangwa4/ft-user-specific-trip-167267387
+[34m|[m[33m\[m [33m\[m [35m\[m  
+[34m|[m [33m|[m[33m/[m [35m/[m  
+[34m|[m * [35m|[m [33m9b61fd5[m[33m ([m[1;31morigin/ft-user-specific-trip-167267387[m[33m, [m[1;32mft-user-specific-trip-167267387[m[33m)[m feat(user): User can view a specific trip
+* [35m|[m [35m|[m   [33mfe2acad[m Merge pull request #6 from victorkarangwa4/ft-user-view-trips-167267297
+[36m|[m[35m\[m [35m\[m [35m\[m  
+[36m|[m [35m|[m[35m/[m [35m/[m  
+[36m|[m * [35m|[m [33m18b8536[m[33m ([m[1;31morigin/ft-user-view-trips-167267297[m[33m, [m[1;32mft-user-view-trips-167267297[m[33m)[m feat(user): User can view all trips
+* [1;31m|[m [35m|[m   [33m82968cf[m Merge pull request #5 from victorkarangwa4/ft-admin-view-bookig-167162570
+[1;32m|[m[1;31m\[m [1;31m\[m [35m\[m  
+[1;32m|[m [1;31m|[m[1;31m/[m [35m/[m  
+[1;32m|[m * [35m|[m [33m93c6c06[m[33m ([m[1;31morigin/ft-admin-view-bookig-167162570[m[33m, [m[1;32mft-admin-view-bookig-167162570[m[33m)[m feat(admin): Admin can view all bookings for users
+* [1;33m|[m [35m|[m   [33m8f14807[m Merge pull request #4 from victorkarangwa4/ft-user-view-bookings-167162601
+[1;34m|[m[1;33m\[m [1;33m\[m [35m\[m  
+[1;34m|[m [1;33m|[m[1;33m/[m [35m/[m  
+[1;34m|[m * [35m|[m [33mccc2d06[m[33m ([m[1;31morigin/ft-user-view-bookings-167162601[m[33m, [m[1;32mft-user-view-bookings-167162601[m[33m)[m feat(user): User can view all his/her bookings
+[1;34m|[m [35m|[m[35m/[m  
+* [35m|[m   [33mac6e384[m Merge pull request #3 from victorkarangwa4/ft-user-can-signin-167161253
+[1;36m|[m[35m\[m [35m\[m  
+[1;36m|[m [35m|[m[35m/[m  
+[1;36m|[m * [33m2bb1c44[m feat(user): User can signin
+* [31m|[m   [33m9b9b75b[m Merge pull request #2 from victorkarangwa4/ft-user-can-signup-167161396
+[32m|[m[31m\[m [31m\[m  
+[32m|[m [31m|[m[31m/[m  
+[32m|[m * [33m146f03c[m[33m ([m[1;31morigin/ft-user-can-signup-167161396[m[33m, [m[1;32mft-user-can-signup-167161396[m[33m)[m feat(user): User can signup
+[32m|[m[32m/[m  
+* [33m6ed9961[m initial commit
+* [33mcfa6f19[m[33m ([m[1;31morigin/UI-Templates[m[33m, [m[1;32mUI-Templates[m[33m)[m UI Elements
+* [33m6469238[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Initial commit

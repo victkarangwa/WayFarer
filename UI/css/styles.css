@@ -333,6 +333,11 @@ box-shadow: 8px 8px 8px 8px rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   width: 100px;
   outline: none;
 }
+/* View trips page container */
+.container-center{
+  display: flex;
+  justify-content: center;
+}
 
 .search-input-container{
   background-color:white;
@@ -351,7 +356,6 @@ box-shadow: 8px 8px 8px 8px rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 5px;
     width:300px;
     height: 40px;
-    margin-left: 50px;
     margin-top: 50px;
 }
 .location-input{
@@ -527,7 +531,6 @@ padding: 0 10px;
   text-align: center;
   border-collapse: collapse;
   margin-top: 10px;
-  margin-left: 50px;
   margin-bottom: 10px;
   white-space: nowrap;
 
@@ -535,9 +538,7 @@ padding: 0 10px;
 .scrollable{
   display: block;
   overflow: auto;
-  width:1000px;
-  margin-left: 10px;
-  margin-right: 10px;
+  width:100%;
 }
 .no-flow{
   overflow: hidden;
@@ -644,6 +645,7 @@ text-align: center;
     display:inline-block;
     height: 500px;
     margin-top: 30px;
+    justify-content: center;
     width: 100%;
   }
   .all-trips{
@@ -759,7 +761,7 @@ text-align: center;
     width: 50%;
     height: 500px;
   }
-  
+ 
   .container{
     position: relative;
     background-color: #fefefea1;
@@ -788,7 +790,6 @@ text-align: center;
   .container-body{
     height: 250px;
     text-align: center;
-   
      
  }
  .home-search-column{
@@ -809,6 +810,7 @@ text-align: center;
  .home-search-row{
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
  }
  .search-trip{
    height: 100%;
@@ -928,6 +930,12 @@ text-align: center;
   .trip-input:focus{
     border: 2px solid #27425d;
   }
+  
+  @media screen and (max-width: 1024px) {
+    .location-input-container{
+      width: 250px;
+    }
+  }
 
   @media screen and (max-width: 900px) {
     .centered-form{
@@ -1038,6 +1046,8 @@ text-align: center;
  .home-search-row{
 
   flex-direction: column;
+  
+  
    
 }
  .location-input-container{
