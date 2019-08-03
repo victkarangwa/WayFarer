@@ -1,14 +1,14 @@
-import jwt from 'jsonwebtoken';
 import _ from 'lodash';
+import generateAuthToken from '../helpers/tokens';
 
 
 class User {
   constructor() {
     this.users = [
       {
-        id: 7,
-        first_name: 'victor',
-        last_name: 'karangwa',
+        id: 1,
+        first_name: 'Victor',
+        last_name: 'KARANGWA',
         email: 'victor@gmail.com',
         password: 'payloadpassword',
         is_admin: true,
@@ -20,7 +20,7 @@ class User {
       const currentId = this.users.length + 1;
 
       let newUser = {
-        token: this.generateAuthToken(currentId, payload.is_admin),
+        token: generateAuthToken(currentId, payload.is_admin),
         id: currentId,
         first_name: payload.first_name,
         last_name: payload.last_name,
@@ -48,12 +48,12 @@ class User {
         return {
           status: 'error',
           error:
-       'email or password is incorrect!.',
+       'email or password is incorrect!',
         };
       }
 
       let result = {
-        token: this.generateAuthToken(user.id, user.is_admin),
+        token: generateAuthToken(user.id, user.is_admin),
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
@@ -67,16 +67,11 @@ class User {
 
     isUserExist = user_id => this.users.find(u => u.id === user_id);
 
-    generateAuthToken = (id, admin) => {
-      const token = jwt.sign({ id, is_admin: admin }, 'secretKey');
-      return token;
-    };
-
-  // return a certain user basing on his or id
-  //  grabTripCreatorDetail = (user_id) => {
-  //    const user = this.users.find(u => u.id === parseInt(user_id, 10));
-  //    return user;
-  //  }
+    // return a certain user basing on his or id
+    grabUserDetail = (user_id) => {
+      const user = this.users.find(u => u.id === parseInt(user_id, 10));
+      return user;
+    }
 }
 
 export default new User();

@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import _ from 'lodash';
 import Trip from '../models/trip_model';
 
 class TripController {
@@ -20,7 +21,20 @@ class TripController {
     return res.status(400).send({ status: 'error', error: `${result.error.details[0].message}` });
   };
 
-  // Find all available trip
+   findOneTrip = (req, res) => {
+     let trip = Trip.getTripById(req.params.id);
+     if (!trip) {
+       return res.status(404).send({ status: 'error', message: 'Such kind of trip is not found!' });
+     }
+     trip = {
+       status: 'success',
+       data: _.pick(trip, ['trip_id', 'seating_capacity',
+         'origin', 'destination', 'trip_date', 'fare', 'createdOn']),
+     };
+     return res.status(200).send(trip);
+   };
+
+   // Find all available trip
     findAllTrip = (req, res) => {
       const trips = Trip.getAllTrip();
       if (trips.length === 0) {
