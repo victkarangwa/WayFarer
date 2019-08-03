@@ -1,6 +1,4 @@
-
-import jwt from 'jsonwebtoken';
-
+import userInfo from '../helpers/userInfo';
 
 class Trip {
   constructor() {
@@ -25,7 +23,7 @@ class Trip {
 
       let newTrip = {
         trip_id: newId,
-        owner: this.getUserId(res, token),
+        owner: userInfo(res, token),
         status: data.status,
         seating_capacity: data.seating_capacity,
         bus_license_number: data.bus_license_number,
@@ -41,21 +39,10 @@ class Trip {
       return newTrip;
     };
 
-   getUserId = (res, token) => {
-     // decode token for the sake of picking user_id
-     // to use in setting trip owner.
-     try {
-       const decoded = jwt.verify(token, 'secretKey');
-       return decoded.id;
-     } catch (error) {
-       return res.status(400).send({ status: 'error', error: error.message });
-     }
-   };
-
-   getTripById = (id) => {
-     const trip = this.trips.find(tripId => tripId.trip_id === parseInt(id, 10));
-     return trip;
-   };
+    getTripById = (id) => {
+      const trip = this.trips.find(Tid => Tid.trip_id === parseInt(id, 10));
+      return trip;
+    };
 
       getAllTrip = () => this.trips;
 
@@ -67,6 +54,25 @@ class Trip {
         trip.status = 'cancelled';
         return trip;
       };
+
+       // checks if atrip is currently available in trips[]
+       isTripExist = trip_id => this.trips.find(trip => trip.trip_id === parseInt(trip_id, 10));
+
+       // when status = active
+       isTripActive = (trip_id) => {
+         const trip = this.trips.find(tripId => tripId.trip_id === parseInt(trip_id, 10));
+         if (trip.status.trim() === 'active') {
+           return true;
+         }
+         return false;
+       };
+
+
+       // it returns acertain trip basing on id
+      getTripDetail = (trip_id) => {
+        const trip = this.trips.find(tripId => tripId.trip_id === parseInt(trip_id, 10));
+        return trip;
+      }
 }
 
 export default new Trip();

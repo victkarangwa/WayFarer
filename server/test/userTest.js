@@ -139,7 +139,7 @@ describe('POST signin failed, api/v1/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal('error');
-        expect(res.body.error).to.equal('email or password is incorrect!.');
+        expect(res.body.error).to.equal('email or password is incorrect!');
         done();
       });
   });
