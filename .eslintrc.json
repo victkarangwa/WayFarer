@@ -15,7 +15,10 @@
       "camelcase":"off",
       "import/no-named-as-default":"off",
       "import/no-named-as-default-member":"off",
-      "consistent-return":"off"
+      "consistent-return":"off",
+      "prefer-const":"off",
+      "no-param-reassign":"off"
+      
 
     }
 }
