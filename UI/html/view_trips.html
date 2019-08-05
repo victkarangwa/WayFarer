@@ -27,10 +27,10 @@
         <ul class="topnav">
             <li class="k"><a class="menulink" href="../html/signin.html">Login</a>
 
-              <li><a class="menulink active" href="../html/about.html">About</a></li>
+              <li><a class="menulink" href="../html/about.html">About</a></li>
               <li><a class="menulink" href="../html/contact.html">Contact</a></li>
               <li><a class="menulink" href="../html/view_booking.html">Bookings</a></li>
-              <li><a class="menulink" href="../html/view_trips.html">Trips</a></li>
+              <li><a class="menulink active" href="../html/view_trips.html">Trips</a></li>
               <li><a class="menulink" href="../index.html">Home</a></li>
               <img class="main-logo" src="../img/logo.png">
             </ul>
@@ -42,183 +42,184 @@
         
         <a href="../index.html">Home</a>
         <hr class="menu-separtor">
-        <a href="../html/view_trips.html">Trips</a>
+        <a  class="active" href="../html/view_trips.html">Trips</a>
         <hr class="menu-separtor">
         <a href="../html/view_booking.html">Bookings</a>
         <hr class="menu-separtor">
         <a href="../html/contact.html">Contact</a>
         <hr class="menu-separtor">
-        <a class="active" href="../html/about.html">About</a>
+        <a href="../html/about.html">About</a>
         <hr class="menu-separtor">
         <a href="../html/signin.html">Login</a>
         <hr class="menu-separtor">
       </div>
       <h2 class="most-title">Get more trips from WayFarer</h2>
 
-      <div class="all-trips">
-
-
-   <div class="trip-list">
-      <div class="search-filter">
-        <div class="search-input-container">
-        <input  type="text" class="search-input" id="searchtrip" placeholder="Search a trip">
-        <input type="button" value="search" class="btn-custom"/>
-     </div>
-     <select class="trip-input">
-       <option disabled selected >Filter By</option>
-       <option>Origin</option>
-       <option>Destination</option>
-       <option>Date</option>
-       <option>Fare</option>
-      </select>
+<div class="container-center">
+  <div class="all-trips">
+    <div class="trip-list">
+       <div class="search-filter">
+         <div class="search-input-container">
+         <input  type="text" class="search-input" id="searchtrip" placeholder="Search a trip">
+         <input type="button" value="search" class="btn-custom"/>
       </div>
-     
-      <div class="scrollable ">
-     <table class="trip-table">
-        <thead>
-          <tr>
-        <th> Trip Id</th>
-        <th>Origin </th>
-        <th>Destination</th>
-        <th>Trip Date</th>
-        <th>Trip Time</th>
-        <th>Seating Capacity </th>
-        <th>Bus Licence Number </th>
-        <th>Trip Fare </th>
-        <th>Action </th>
-       </tr>
-       </thead>
-       <tbody>
-             <tr>
-               <td>KGL17RB</td>
-               <td>Kigali</td>
-               <td>Rubavu</td>
-               <td>11th Jun 2019</td>
-               <td>06:00 AM</td>
-               <td>60 Seats</td>
-               <td>RAC 521 D</td>
-               <td>RWF 3500</td>
-              <!-- User can view a specific trip by clicking on the Eye icon and see all details regarding the trip -->
-               <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
-                     </tr>
-             <tr>
-                   <td>KGL17RB</td>
-                   <td>Kigali</td>
-                   <td>Rubavu</td>
-                   <td>11th Jun 2019</td>
-                   <td>06:00 AM</td>
-                   <td>60 Seats</td>
-                   <td>RAC 521 D</td>
-                   <td>RWF 3500</td>
-                 
-                   <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
-              
-               </tr>
-               <tr>
-                       <td>KGL17RB</td>
-                       <td>Kigali</td>
-                       <td>Rubavu</td>
-                       <td>11th Jun 2019</td>
-                       <td>06:00 AM</td>
-                       <td>60 Seats</td>
-                       <td>RAC 521 D</td>
-                       <td>RWF 3500</td>
-                     
-                       <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
-              
-                 </tr>
-                 <tr>
-                       <td>KGL17RB</td>
-                       <td>Kigali</td>
-                       <td>Rubavu</td>
-                       <td>11th Jun 2019</td>
-                       <td>06:00 AM</td>
-                       <td>60 Seats</td>
-                       <td>RAC 521 D</td>
-                       <td>RWF 3500</td>
-                     
-                        <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
+      <select class="trip-input">
+        <option disabled selected >Filter By</option>
+        <option>Origin</option>
+        <option>Destination</option>
+        <option>Date</option>
+        <option>Fare</option>
+       </select>
+       </div>
       
-                   </tr>
-                   <tr>
-                           <td>KGL17RB</td>
-                           <td>Kigali</td>
-                           <td>Rubavu</td>
-                           <td>11th Jun 2019</td>
-                           <td>06:00 AM</td>
-                           <td>60 Seats</td>
-                           <td>RAC 521 D</td>
-                           <td>RWF 3500</td>
-                         
-                           <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
-              
-                     </tr>
-                
-                       
-           </tbody>
-      </table>
-    </div>
-
-
-
+       <div class="scrollable ">
+      <table class="trip-table">
+         <thead>
+           <tr>
+         <th> Trip Id</th>
+         <th>Origin </th>
+         <th>Destination</th>
+         <th>Trip Date</th>
+         <th>Trip Time</th>
+         <th>Seating Capacity </th>
+         <th>Bus Licence Number </th>
+         <th>Trip Fare </th>
+         <th>Action </th>
+        </tr>
+        </thead>
+        <tbody>
+              <tr>
+                <td>KGL17RB</td>
+                <td>Kigali</td>
+                <td>Rubavu</td>
+                <td>11th Jun 2019</td>
+                <td>06:00 AM</td>
+                <td>60 Seats</td>
+                <td>RAC 521 D</td>
+                <td>RWF 3500</td>
+               <!-- User can view a specific trip by clicking on the Eye icon and see all details regarding the trip -->
+                <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
+                      </tr>
+              <tr>
+                    <td>KGL17RB</td>
+                    <td>Kigali</td>
+                    <td>Rubavu</td>
+                    <td>11th Jun 2019</td>
+                    <td>06:00 AM</td>
+                    <td>60 Seats</td>
+                    <td>RAC 521 D</td>
+                    <td>RWF 3500</td>
+                  
+                    <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
+               
+                </tr>
+                <tr>
+                        <td>KGL17RB</td>
+                        <td>Kigali</td>
+                        <td>Rubavu</td>
+                        <td>11th Jun 2019</td>
+                        <td>06:00 AM</td>
+                        <td>60 Seats</td>
+                        <td>RAC 521 D</td>
+                        <td>RWF 3500</td>
+                      
+                        <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
+               
+                  </tr>
+                  <tr>
+                        <td>KGL17RB</td>
+                        <td>Kigali</td>
+                        <td>Rubavu</td>
+                        <td>11th Jun 2019</td>
+                        <td>06:00 AM</td>
+                        <td>60 Seats</td>
+                        <td>RAC 521 D</td>
+                        <td>RWF 3500</td>
+                      
+                         <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
+       
+                    </tr>
+                    <tr>
+                            <td>KGL17RB</td>
+                            <td>Kigali</td>
+                            <td>Rubavu</td>
+                            <td>11th Jun 2019</td>
+                            <td>06:00 AM</td>
+                            <td>60 Seats</td>
+                            <td>RAC 521 D</td>
+                            <td>RWF 3500</td>
+                          
+                            <td><img title="view" alt="view" onclick="viewTrip()" class="square-image" src="../img/view.png"/></td>
+               
+                      </tr>
+                 
+                        
+            </tbody>
+       </table>
+     </div>
+ 
+ 
+ 
+  </div>
+ 
+  <!-- View a Specific trip -->
+  <div class="modal-view">
+     <div class="create-trip-modal create-trip-modal-js">
+         <form class="custom-form">
+         <h2 class="most-title"><!--<img class="img-icon" src="img/trip_icon.png"/>-->Kigali-Rubavu Trip<label class="closeDialog" style="float: right" onclick="closeModalView()">&times;</label></h2>
+        <table class="custom-table">
+           <tr>
+               <th>Trip Id</th>
+               <td id="viewId" >KGL17RB</td>
+             </tr>
+     
+                  <tr>
+                      <th>Trip Date</th>
+                      <td id="viewDate" >11th May 2019</td>
+                    </tr>
+                    <tr>
+                        
+                  <tr>
+                        <th>Trip Time</th>
+                        <td id="viewTIme" >06L00 AM</td>
+                      </tr>
+                      <tr>
+                            <th>Origin</th>
+                            <td id="viewOrgin" >Kigali</td>
+                          </tr>
+                          <tr>
+                                <th>Destination</th>
+                                <td id="viewDestination" >Rubavu</td>
+                              </tr>
+                    <tr>
+                        <th>Seating Capacity</th>
+                        <td id="viewSeats" >40</td>
+                      </tr>
+                    
+                     
+                        <tr>
+                            <th>Bus Licence Number</th>
+                            <td id="viewPlate" >RAE 501 A</td>
+                          </tr>
+                          <tr>
+                              <th>Trip Fare</th>
+                              <td id="viewFare" >Rwf 3500</td>
+                            </tr>
+                      
+           
+                        
+        </table>
+ 
+        <div class="search-btn-container">
+        <input type="button" class="custom-btn" value="Book Now" onclick="bookTrip()"/>
+        </div>
+             
+           
+         </form>
+ </div>   
+ </div>
  </div>
 
- <!-- View a Specific trip -->
- <div class="modal-view">
-    <div class="create-trip-modal create-trip-modal-js">
-        <form class="custom-form">
-        <h2 class="most-title"><!--<img class="img-icon" src="img/trip_icon.png"/>-->Kigali-Rubavu Trip<label class="closeDialog" style="float: right" onclick="closeModalView()">&times;</label></h2>
-       <table class="custom-table">
-          <tr>
-              <th>Trip Id</th>
-              <td id="viewId" >KGL17RB</td>
-            </tr>
-    
-                 <tr>
-                     <th>Trip Date</th>
-                     <td id="viewDate" >11th May 2019</td>
-                   </tr>
-                   <tr>
-                       
-                 <tr>
-                       <th>Trip Time</th>
-                       <td id="viewTIme" >06L00 AM</td>
-                     </tr>
-                     <tr>
-                           <th>Origin</th>
-                           <td id="viewOrgin" >Kigali</td>
-                         </tr>
-                         <tr>
-                               <th>Destination</th>
-                               <td id="viewDestination" >Rubavu</td>
-                             </tr>
-                   <tr>
-                       <th>Seating Capacity</th>
-                       <td id="viewSeats" >40</td>
-                     </tr>
-                   
-                    
-                       <tr>
-                           <th>Bus Licence Number</th>
-                           <td id="viewPlate" >RAE 501 A</td>
-                         </tr>
-                         <tr>
-                             <th>Trip Fare</th>
-                             <td id="viewFare" >Rwf 3500</td>
-                           </tr>
-                     
-          
-                       
-       </table>
-
-       <div class="search-btn-container">
-       <input type="button" class="custom-btn" value="Book Now" onclick="bookTrip()"/>
-       </div>
-            
-          
-        </form>
-</div>   
-</div>
 </div>
 <!-- ############################### -->
 
