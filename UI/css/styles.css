@@ -337,8 +337,13 @@ box-shadow: 8px 8px 8px 8px rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 .container-center{
   display: flex;
   justify-content: center;
+  
 }
-
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 100px;
+}
 .search-input-container{
   background-color:white;
     position:relative;
@@ -552,13 +557,11 @@ padding: 0 10px;
 .container-row{
 display: flex;
 flex-direction: row;
-margin: 50px ;
 text-align: center;
 }
 .container-column{
   display: flex;
   flex-direction: column;
-  margin: 50px ;
   text-align: center;
   }
 .trip-table th{
@@ -592,7 +595,6 @@ border-radius: 5px;
 }
 .most-title{
   text-align: center;
-  padding: 5px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #487eb0;
 }
@@ -642,21 +644,21 @@ text-align: center;
     
   }
   .trip-list{
-    display:inline-block;
     height: 500px;
     margin-top: 30px;
-    justify-content: center;
     width: 100%;
   }
   .all-trips{
     display: flex;
     flex-direction: row;
     margin: 0 auto;
+    
   }
   @media screen and (max-width: 900px) {
     .centered-form{
       width: 300px;
       padding: 20px;}
+      
   }
   /* The Modal (background) */
 .modal {
@@ -819,7 +821,7 @@ text-align: center;
  .custom-body{
    overflow: auto;
    width: 100%;
-   background-image: url(../img/bus1.jpg);
+   background-image: url(../img/bus2.jpg);
    background-repeat: no-repeat;
    background-size: cover;
    height: 50%;
@@ -904,7 +906,7 @@ text-align: center;
   .modal-buttons{ margin-left: 50px;}
   .trip-input{
     
-    width:300px;
+    width:wrap;
     height:30px;
     border: 1px solid #c7c7c7;
     margin:0px 20px 20px 20px;
@@ -921,7 +923,7 @@ text-align: center;
     text-align: left;
     display: block;
     font-weight: bold;
-    
+    margin-left: 20px;
   }
   .custom-form{
     border-radius: 5px;
@@ -1063,6 +1065,9 @@ text-align: center;
  }
  #bookinginfo{
   margin:10px;
+ }
+ .all-trips{
+   width: 350px;
  }
  .available_booking { width: 80%;}
  .custom-btn{width:130px; font-size: 11px;}
