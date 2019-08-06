@@ -84,6 +84,7 @@ const closeModalView = () => {
   document.querySelector('.modal-view').style.display = 'none';
 };
 const bookTrip = () => {
+  location.replace('../html/book_specific_trip.html');
 
 };
 // View Booking

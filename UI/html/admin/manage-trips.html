@@ -181,58 +181,62 @@
  
 
    <!-- Edit a Specific trip -->
-   <div class="modal-edit">
-      <div class="create-trip-modal create-trip-modal-js">
+   <div class="modal-edit"> <div class="container-center">
+      <div class="create-trip-modal create-trip-modal-js container-center">
+       
+
+      
       <form class="custom-form">
           
           <h2 class="most-title"><!--<img class="img-icon" src="img/trip_icon.png"/>-->Edit Trip<label class="closeDialog" style="float: right" onclick="closeModalEdit()">&times;</label></h2>
           <label class="custom-label"><b>Trip Id</b></label>
-          <input  type="text" disabled value="KGL17RB" class="trip-input" id="tripId">
+          <input  type="text" disabled value="KGL17RB" class="trip-input  text-input" id="tripId">
           <label class="custom-label"><b>Trip Orgin</b></label>
-          <input  type="text" value="Kigali" class="trip-input" id="tripOrgin">
+          <input  type="text" value="Kigali" class="trip-input text-input" id="tripOrgin">
           <label class="custom-label" ><b>Destination</b></label>
-          <input type="text" value="Kigali" class="trip-input" id="tripDestination">
+          <input type="text" value="Kigali" class="trip-input text-input" id="tripDestination">
           <label class="custom-label"><b>Trip Date</b></label>
-          <input type="date" class="trip-input" id="tripDate">
+          <input type="date" class="trip-input text-input" id="tripDate">
           <label class="custom-label"><b>Trip Time</b></label>
-          <input type="text" value="06:00 AM" class="trip-input" id="tripTime">
+          <input type="text" value="06:00 AM" class="trip-input text-input" id="tripTime">
           <label class="custom-label" ><b>Seats</b></label>
-          <input type="number" value="60" class="trip-input" id="seats">
+          <input type="number" value="60" class="trip-input text-input" id="seats">
           <label class="custom-label"><b>Bus Licence Number</b></label>
-          <input type="text"  value="RAE 541 B" class="trip-input" id="plateNumber">
+          <input type="text"  value="RAE 541 B" class="trip-input text-input" id="plateNumber">
           <label class="custom-label"><b>Trip Fare</b></label>
-          <input type="text" value="3,500" class="trip-input" id="tripFare">
+          <input type="text" value="3,500" class="trip-input text-input" id="tripFare">
           <div class="search-btn-container">
-               <input type="button" class="btn" value="Save changes" onclick="saveTrip()"/>
+               <input type="button" class="custom-btn" value="Save changes" onclick="saveTrip()"/>
             </div>
       </form>
+    </div>
  </div>   
  </div>
          <!-- Crea trip modal-->
          <div class="modal">
-            <div class="create-trip-modal create-trip-modal-js">
+            <div class="create-trip-modal create-trip-modal-js container-center">
             <form class="custom-form" action="#">
                 
                 <h2 class="most-title"><!--<img class="img-icon" src="img/trip_icon.png"/>-->Create a Trip<label class="closeDialog" style="float: right" onclick="closeDialog()">&times;</label></h2>
                 
                 <label class="custom-label"><b>Trip Name</b></label>
-                <input  type="text" class="trip-input" id="tripName">
+                <input  type="text" class="trip-input text-input" id="tripName">
                 <label class="custom-label" ><b>Departure</b></label>
-                <input type="text" class="trip-input" id="departureName">
+                <input type="text" class="trip-input text-input" id="departureName">
                 <label class="custom-label"><b>Trip Date</b></label>
-                <input type="date" class="trip-input" id="tripDate">
+                <input type="date" class="trip-input text-input" id="tripDate">
                 <label class="custom-label"><b>Seats</b></label>
-                <input type="number" class="trip-input" id="seats">
+                <input type="number" class="trip-input text-input" id="seats">
                 <label class="custom-label"><b>Bus Name</b></label>
-                <input type="text" class="trip-input" id="busNameName">
+                <input type="text" class="trip-input text-input" id="busNameName">
                 <label class="custom-label"><b>Bus Plate Number</b></label>
-                <input type="text" class="trip-input" id="plateNumber">
+                <input type="text" class="trip-input text-input" id="plateNumber">
                 <label class="custom-label"><b>Driver Name</b></label>
-                <input type="text" class="trip-input" id="driverName">
+                <input type="text" class="trip-input text-input" id="driverName">
                 <label class="custom-label"><b>Trip Fare</b></label>
-                <input type="text" class="trip-input" id="tripFare">
+                <input type="text" class="trip-input text-input" id="tripFare">
                 <div class="search-btn-container">
-                     <input type="submit" class="btn" value="Create Trip" onclick="createTrip()"/>
+                     <input type="submit" class="custom-btn" value="Create Trip" onclick="createTrip()"/>
                   </div>
             </form>
        </div>   
