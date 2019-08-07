@@ -71,5 +71,26 @@ const users = [
     email: `${faker_mail}@gmail`,
     password: faker_password,
   },
+  // 10 first name with whitespace
+  {
+    first_name: ' ',
+    last_name: faker.name.lastName(),
+    email: faker.internet.email(),
+    password: faker_password,
+  },
+  // 11 last name with whitespace
+  {
+    first_name: faker.name.lastName(),
+    last_name: ' ',
+    email: faker.internet.email(),
+    password: faker_password,
+  },
+  // 12 password with whitespace
+  {
+    first_name: faker.name.lastName(),
+    last_name: ' ',
+    email: faker.internet.email(),
+    password: faker_password,
+  },
 ];
 export default users;

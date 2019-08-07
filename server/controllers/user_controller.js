@@ -1,5 +1,6 @@
 import Joi from 'joi';
 import User from '../models/user_model';
+import status from '../helpers/StatusCode';
 
 class UserController {
     signUp = (req, res) => {
@@ -16,14 +17,23 @@ class UserController {
       if (result.error == null) {
         if (User.isEmailTaken(req.body.email)) {
           // 409 = Conflict due to existing email
-          return res.status(409).send({ status: 'error', error: `${req.body.email} already exists` });
+          return res.status(status.REQUEST_CONFLICT).send({ status: status.REQUEST_CONFLICT, error: `${req.body.email} already exists` });
+        }
+        if (!User.validData(req.body.first_name)) {
+          return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'first_name can\'t be empty' });
+        }
+        if (!User.validData(req.body.last_name)) {
+          return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'last_name can\'t be empty' });
+        }
+        if (!User.validData(req.body.password)) {
+          return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'password can\'t be empty' });
         }
         // Everything is okay
         // We fire up User model to create user
         const user = User.create(req.body);
-        return res.status(201).send(user);
+        return res.status(status.RESOURCE_CREATED).send(user);
       }
-      return res.status(400).send({ status: 'error', error: `${result.error.details[0].message}` });
+      return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${result.error.details[0].message}` });
     };
 
     signIn = (req, res) => {
@@ -38,14 +48,14 @@ class UserController {
       // Everything is okay
         // We fire up User model to login user
         const user = User.login(req.body);
-        if (user.status === 'success') {
+        if (user.status === status.REQUEST_SUCCEDED) {
           res.set('x-auth-token', user.data.token);
-          return res.status(200).send(user);
+          return res.status(status.REQUEST_SUCCEDED).send(user);
         }
 
-        return res.status(401).send(user);
+        return res.status(status.UNAUTHORIZED).send(user);
       }
-      return res.status(400).send({ status: 'error', error: `${result.error.details[0].message}` });
+      return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${result.error.details[0].message}` });
     };
 }
 

@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import generateAuthToken from '../helpers/tokens';
+import status from '../helpers/StatusCode';
 
 
 class User {
@@ -30,7 +31,8 @@ class User {
       };
       this.users.push(newUser);
       newUser = {
-        status: 'success',
+        status: status.RESOURCE_CREATED,
+        message: 'User successfully signed up',
         data: _.pick(newUser, ['token', 'id',
           'first_name', 'last_name', 'email']),
       };
@@ -46,7 +48,7 @@ class User {
        && ((Wuser.password === payload.password)));
       if (!user) {
         return {
-          status: 'error',
+          status: status.UNAUTHORIZED,
           error:
        'email or password is incorrect!',
         };
@@ -58,7 +60,11 @@ class User {
         last_name: user.last_name,
         email: user.email,
       };
-      result = { status: 'success', data: result };
+      result = {
+        status: status.REQUEST_SUCCEDED,
+        message: 'User successfully signed in',
+        data: result,
+      };
 
       return result;
     };
@@ -72,6 +78,12 @@ class User {
       const user = this.users.find(u => u.id === parseInt(user_id, 10));
       return user;
     }
+
+    validData = (name) => {
+      let entity = name.replace(/[^a-zA-Z0-9]/g, '');
+      if (entity) return true;
+      return false;
+    };
 }
 
 export default new User();
