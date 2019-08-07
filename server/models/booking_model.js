@@ -49,6 +49,7 @@ class Booking {
 
       // Add user_id property
       temp.user_id = newBooking.user_id;
+      temp.trip_id = newBooking.trip_id;
 
       // Keep the booking info
       this.tempBookings.push(temp);
@@ -73,6 +74,9 @@ class Booking {
       // this.tempBookings.find(k => k.user_id === parseInt(id, 10))];
       return userBookings;
     }
+
+    // return all bookings to check seat avalability
+    getBookings = () => this.bookings;
 
     // isSeatAvailable = (trip_id) => {
     //   const booking_trip = this.tempBookings.find(i => i.trip_id === parseInt(trip_id, 10));

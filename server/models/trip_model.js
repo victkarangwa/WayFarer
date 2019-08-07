@@ -69,7 +69,7 @@ class Trip {
        // when status = active
        isTripActive = (trip_id) => {
          const trip = this.trips.find(tripId => tripId.trip_id === parseInt(trip_id, 10));
-         if (trip.status.trim() === 'active') {
+         if (trip.status.toLowerCase().trim() === 'active') {
            return true;
          }
          return false;

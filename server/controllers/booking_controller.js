@@ -20,10 +20,20 @@ class BookingController {
         if (!Trip.isTripActive(req.body.trip_id)) {
           return res.status(status.FORBIDDEN).send({ status: status.FORBIDDEN, error: 'The Trip you are trying to book is recently cancelled!' });
         }
-        // if (!Booking.isSeatAvailable(req.body.trip_id)) {
-        //   return res.status(status.NOT_FOUND).send({ status: 'error', error: 'The trip seats is already full' });
-        // }
 
+        // Filter all bookings with suggested trip_id
+        const exact_bookings = Booking.getBookings().filter(id => id.trip_id === req.body.trip_id);
+        const exact_trip = Trip.getTripById(req.body.trip_id);
+        // console.log(exact_bookings.length);
+
+        // If there is no booking corresponding to the specified trip
+        if (exact_bookings.length !== 0) {
+          // Check if the trip is full of other bookings
+          if (exact_bookings.length >= exact_trip.seating_capacity) {
+            return res.status(status.FORBIDDEN).send({ status: status.FORBIDDEN, error: 'The Trip you are trying to book is full' });
+          }
+        }
+        // Otherwise
         const booking = Booking.reserveSeat(res, req.body, req.header('x-auth-token'));
         return res.status(status.RESOURCE_CREATED).send(booking);
       }
