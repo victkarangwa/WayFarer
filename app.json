@@ -13,7 +13,7 @@
    "url": "https://github.com/victorkarangwa4/WayFarer/blob/develop/LICENCE.md"
   }
  },
- "host": "127.0.0.1:5000",
+ "host": "https://adc-wayfarer-api.herokuapp.com",
  "basePath": "/api/v1",
  "tags": [
   {
