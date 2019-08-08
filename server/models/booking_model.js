@@ -49,11 +49,16 @@ class Booking {
 
       // Add user_id property
       temp.user_id = newBooking.user_id;
+      temp.trip_id = newBooking.trip_id;
 
       // Keep the booking info
       this.tempBookings.push(temp);
 
-      newBookingResponse = { status: 'success', data: newBookingResponse };
+      newBookingResponse = {
+        status: status.RESOURCE_CREATED,
+        message: 'Booking created successfully',
+        data: newBookingResponse,
+      };
 
       return newBookingResponse;
     };
@@ -69,6 +74,9 @@ class Booking {
       // this.tempBookings.find(k => k.user_id === parseInt(id, 10))];
       return userBookings;
     }
+
+    // return all bookings to check seat avalability
+    getBookings = () => this.bookings;
 
     // isSeatAvailable = (trip_id) => {
     //   const booking_trip = this.tempBookings.find(i => i.trip_id === parseInt(trip_id, 10));
@@ -88,7 +96,7 @@ class Booking {
           // it returns user object
           return decoded;
         } catch (error) {
-          return res.status(400).send({ status: 'error', error: error.message });
+          return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: error.message });
         }
       };
 
@@ -98,16 +106,16 @@ class Booking {
       // check if booking exists in bookings
 
       const booking = this.bookings.find(b => b.booking_id === parseInt(id, 10));
-      if (!booking) return res.status(status.NOT_FOUND).send({ status: 'error', message: 'Booking is not found!' });
+      if (!booking) return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, message: 'Booking is not found!' });
       // Before deleting check if he/ she is the owner of booking
       const owner_id = userInfo(res, token);
       if (!(booking.user_id === owner_id)) {
-        return res.status(status.FORBIDDEN).send({ status: 'error', message: 'Access denied!, You do not have permission to delete this booking.' });
+        return res.status(status.FORBIDDEN).send({ status: status.FORBIDDEN, message: 'Access denied!, You do not have permission to delete this booking.' });
       }
       // otherwise go ahead and remove property
       const index = this.bookings.indexOf(booking);
       this.bookings.splice(index, 1);
-      return res.status(status.REQUEST_SUCCEDED).send({ status: 'success', data: { message: 'Booking deleted successfully' } });
+      return res.status(status.REQUEST_SUCCEDED).send({ status: status.REQUEST_SUCCEDED, data: { message: 'Booking deleted successfully' } });
     }
 }
 

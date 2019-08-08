@@ -32,7 +32,7 @@ describe('POST User can book a seat, api/v1/booking', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('success');
+        expect(res.body.status).to.equal(status.RESOURCE_CREATED);
         expect(res.status).to.equal(status.RESOURCE_CREATED);
         // expect(res.body.data.token).to.be.a('string');
         done();
@@ -49,7 +49,7 @@ describe('POST User tries to book unavailable trip', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('error');
+        expect(res.body.status).to.equal(status.NOT_FOUND);
         expect(res.body.error).to.equal('The Trip you are trying to book is not found!');
         expect(res.status).to.equal(status.NOT_FOUND);
         // expect(res.body.data.token).to.be.a('string');
@@ -67,7 +67,7 @@ describe('POST User book without access', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('error');
+        expect(res.body.status).to.equal(status.NOT_FOUND);
         expect(res.body.error).to.equal('The User associated with this token doesn\'t exist.');
         expect(res.status).to.equal(status.NOT_FOUND);
         // expect(res.body.data.token).to.be.a('string');
@@ -86,7 +86,7 @@ describe('POST User book without choosing trip', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('error');
+        expect(res.body.status).to.equal(status.BAD_REQUEST);
         expect(res.body.error).to.equal('"trip_id" is required');
         expect(res.status).to.equal(status.BAD_REQUEST);
         // expect(res.body.data.token).to.be.a('string');
@@ -103,7 +103,7 @@ describe('DELETE User delete a booking', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('success');
+        expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
         expect(res.body.data.message).to.equal('Booking deleted successfully');
         expect(res.status).to.equal(status.REQUEST_SUCCEDED);
         // expect(res.body.data.token).to.be.a('string');
@@ -120,7 +120,7 @@ describe('DELETE User delete a booking without access', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('error');
+        expect(res.body.status).to.equal(status.NOT_FOUND);
         expect(res.body.error).to.equal('The User associated with this token doesn\'t exist.');
         // expect(res.body.data.token).to.be.a('string');
         done();
@@ -136,7 +136,7 @@ describe('GET User view all booking', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('success');
+        expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
         expect(res.status).to.equal(status.REQUEST_SUCCEDED);
         // expect(res.body.data.token).to.be.a('string');
         done();
@@ -152,7 +152,7 @@ describe('GET User view all booking', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('success');
+        expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
         expect(res.status).to.equal(status.REQUEST_SUCCEDED);
         // expect(res.body.data.token).to.be.a('string');
         done();

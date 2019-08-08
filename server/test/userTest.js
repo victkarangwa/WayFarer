@@ -23,7 +23,49 @@ let token;
 // ############ SIGNUP TEST ############
 
 // Test signup for the user
+describe('POST sign up with whitespaced first_name, api/v1/auth/signup', () => {
+  it('should return an error', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .set('Accept', 'application/json')
+      .send(users[10])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(status.BAD_REQUEST);
+        expect(res.body.status).to.equal(status.BAD_REQUEST);
+        done();
+      });
+  });
+});
 
+describe('POST sign up with whitespaced last_name, api/v1/auth/signup', () => {
+  it('should return an error', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .set('Accept', 'application/json')
+      .send(users[11])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(status.BAD_REQUEST);
+        expect(res.body.status).to.equal(status.BAD_REQUEST);
+        done();
+      });
+  });
+});
+describe('POST sign up with whitespaced password, api/v1/auth/signup', () => {
+  it('should return an error', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .set('Accept', 'application/json')
+      .send(users[12])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(status.BAD_REQUEST);
+        expect(res.body.status).to.equal(status.BAD_REQUEST);
+        done();
+      });
+  });
+});
 describe('POST sign up successfully, api/v1/auth/signup', () => {
   it('should return signup successful', (done) => {
     chai.request(app)
@@ -33,7 +75,7 @@ describe('POST sign up successfully, api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(status.RESOURCE_CREATED);
-        expect(res.body.status).to.equal('success');
+        expect(res.body.status).to.equal(status.RESOURCE_CREATED);
         expect(res.body.data.token).to.be.a('string');
         expect(res.body.data.first_name).to.equal(fname);
         expect(res.body.data.last_name).to.equal(lname);
@@ -119,7 +161,7 @@ describe('POST signin successfully, api/v1/auth/signin', () => {
       .send(users[5])
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('success');
+        expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
         expect(res.body.data.token).to.be.a('string');
         expect(res.body.data.first_name).to.equal(fname);
         expect(res.body.data.last_name).to.equal(lname);
@@ -138,7 +180,7 @@ describe('POST signin failed, api/v1/auth/signin', () => {
       .send(users[6])
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('error');
+        expect(res.body.status).to.equal(status.UNAUTHORIZED);
         expect(res.body.error).to.equal('email or password is incorrect!');
         done();
       });
@@ -154,7 +196,7 @@ describe('POST signin with incomplete data, api/v1/auth/signin', () => {
       .send(users[7])
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('error');
+        expect(res.body.status).to.equal(status.BAD_REQUEST);
         expect(res.body.error).to.equal('"email" is required');
         done();
       });
@@ -170,7 +212,7 @@ describe('POST signin with incomplete data, api/v1/auth/signin', () => {
       .send(users[8])
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('error');
+        expect(res.body.status).to.equal(status.BAD_REQUEST);
         expect(res.body.error).to.equal('"password" is required');
         done();
       });
@@ -186,7 +228,7 @@ describe('POST signin with invalid email, api/v1/auth/signin', () => {
       .send(users[9])
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal('error');
+        expect(res.body.status).to.equal(status.BAD_REQUEST);
         expect(res.body.error).to.equal('"email" must be a valid email');
         done();
       });

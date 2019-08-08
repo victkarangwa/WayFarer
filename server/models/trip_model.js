@@ -1,4 +1,5 @@
 import userInfo from '../helpers/userInfo';
+import status from '../helpers/StatusCode';
 
 class Trip {
   constructor() {
@@ -34,7 +35,11 @@ class Trip {
         createdOn: Date(),
       };
       this.trips.push(newTrip);
-      newTrip = { status: 'success', data: newTrip };
+      newTrip = {
+        status: status.RESOURCE_CREATED,
+        message: 'Trip created successfully',
+        data: newTrip,
+      };
 
       return newTrip;
     };
@@ -49,7 +54,10 @@ class Trip {
       cancel = (res, data) => {
         // check if trip exists in our trips array
         const trip = this.trips.find(tripId => tripId.trip_id === parseInt(data.id, 10));
-        if (!trip) return res.status(404).send({ status: 'error', error: 'Such trip is not found!' });
+        if (!trip) return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, error: 'Such trip is not found!' });
+
+        // If the trip is already cancelled
+        if (trip.status === 'cancelled') return res.status(status.REQUEST_CONFLICT).send({ status: status.REQUEST_CONFLICT, error: 'Trip is already cancelled' });
         // otherwise go ahead mark it as cancelled
         trip.status = 'cancelled';
         return trip;
@@ -61,7 +69,7 @@ class Trip {
        // when status = active
        isTripActive = (trip_id) => {
          const trip = this.trips.find(tripId => tripId.trip_id === parseInt(trip_id, 10));
-         if (trip.status.trim() === 'active') {
+         if (trip.status.toLowerCase().trim() === 'active') {
            return true;
          }
          return false;
