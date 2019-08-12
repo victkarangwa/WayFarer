@@ -30,7 +30,6 @@ describe('GET Both Admin and Users can see all trips, api/v1/trips', () => {
   it('should return all trips', (done) => {
     chai.request(app)
       .get('/api/v1/trips')
-      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -50,7 +49,6 @@ describe('GET View a specific trip api/v1/trips/{Trip_id}', () => {
   it('should return a specific trip', (done) => {
     chai.request(app)
       .get('/api/v1/trips/1')
-      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -68,7 +66,6 @@ describe('GET View specifc trip with an id not an integer', () => {
   it('should return an error', (done) => {
     chai.request(app)
       .get('/api/v1/trips/k')
-      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -85,7 +82,6 @@ describe('GET view specific , api/v1/trips', () => {
   it('should return an error', (done) => {
     chai.request(app)
       .get('/api/v1/trips/9000')
-      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -98,21 +94,6 @@ describe('GET view specific , api/v1/trips', () => {
   });
 });
 
-describe('GET user with invalid token, api/v1/trips', () => {
-  it('should return all trips', (done) => {
-    chai.request(app)
-      .get('/api/v1/trips')
-      .set('x-auth-token', Invalidtoken)
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal(status.NOT_FOUND);
-        expect(res.body.error).to.equal('The User associated with this token doesn\'t exist.');
-        // expect(res.body.data.token).to.be.a('string');
-        done();
-      });
-  });
-});
 
 // Test to create a new trip
 
@@ -143,9 +124,9 @@ describe('PATCH Admin can cancel a trip, api/v1/trips', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal(status.RESOURCE_CREATED);
+        expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
         expect(res.body.data.message).to.equal('Trip cancelled successfully');
-        expect(res.status).to.equal(status.RESOURCE_CREATED);
+        expect(res.status).to.equal(status.REQUEST_SUCCEDED);
         // expect(res.body.data.token).to.be.a('string');
         done();
       });
@@ -168,11 +149,10 @@ describe('PATCH Admin can cancel an already cancelled trip, api/v1/trips', () =>
 });
 
 describe('PATCH params incompleteness, api/v1/trips', () => {
-  it('should create a new trip successfully', (done) => {
+  it('should return an error', (done) => {
     chai.request(app)
       .patch('/api/v1/trips/1/cance')
       .set('x-auth-token', token)
-
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -204,7 +184,7 @@ describe('PATCH trip id which is not an integer, api/v1/trips', () => {
 });
 
 describe('PATCH admin provide wrong id, api/v1/trips', () => {
-  it('should create a new trip successfully', (done) => {
+  it('should return an error', (done) => {
     chai.request(app)
       .patch('/api/v1/trips/9/cancel')
       .set('x-auth-token', token)
