@@ -11,10 +11,10 @@ const trip_controller = new TripController();
 router.post('/', admin, trip_controller.createTrip);
 
 // Get a specific trip: admins + users
-router.get('/:id', auth, trip_controller.findOneTrip);
+router.get('/:id', trip_controller.findOneTrip);
 
 // Both admin and users can see all trips
-router.get('/', auth, trip_controller.findAllTrip);
+router.get('/',  trip_controller.findAllTrip);
 
 // Cancel a trip: only admin can be able to cancel
 // a certain trip
