@@ -65,7 +65,7 @@ class TripController {
       }
 
       Trip.cancel(res, req.params);
-      return res.status(status.RESOURCE_CREATED).send({ status: status.RESOURCE_CREATED, data: { message: 'Trip cancelled successfully' } });
+      return res.status(status.REQUEST_SUCCEDED).send({ status: status.REQUEST_SUCCEDED, data: { message: 'Trip cancelled successfully' } });
     }
 }
 
