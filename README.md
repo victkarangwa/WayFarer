@@ -1,5 +1,5 @@
 # WayFarer
-WayFarer is a public bus transportation booking service. [![Build Status](https://travis-ci.org/victorkarangwa4/WayFarer.svg?branch=develop)](https://travis-ci.org/victorkarangwa4/WayFarer)  [![Coverage Status](https://coveralls.io/repos/github/victorkarangwa4/WayFarer/badge.svg?branch=develop)](https://coveralls.io/github/victorkarangwa4/WayFarer?branch=develop)  [![Maintainability](https://api.codeclimate.com/v1/badges/5ef1f4a2cc38970d6496/maintainability)](https://codeclimate.com/github/victorkarangwa4/WayFarer/maintainability)
+WayFarer is a public bus transportation booking service. [![Build Status](https://travis-ci.org/victorkarangwa4/WayFarer.svg?branch=develop)](https://travis-ci.org/victorkarangwa4/WayFarer)  [![Coverage Status](https://coveralls.io/repos/github/victorkarangwa4/WayFarer/badge.svg?branch=develop)](https://coveralls.io/github/victorkarangwa4/WayFarer?branch=develop)  [![Maintainability](https://api.codeclimate.com/v2/badges/5ef1f4a2cc38970d6496/maintainability)](https://codeclimate.com/github/victorkarangwa4/WayFarer/maintainability)
 
 
 ## Getting Started

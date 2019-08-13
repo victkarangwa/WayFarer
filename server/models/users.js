@@ -12,6 +12,7 @@ const users = [
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     password: faker_password,
+    is_admin: true,
   },
 
   // 1 Correct user info

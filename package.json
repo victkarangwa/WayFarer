@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=text --reporter=html mocha server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
+    "test": "babel-node ./server/models/tableQueries.js createTables && nyc --reporter=text --reporter=html mocha server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
     "start": " babel-node ./server/index.js",
+    "queries": "babel-node ./server/models/tableQueries.js createTables",
     "dev-start": " nodemon --exec babel-node ./server/index.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "showCoverage": "start coverage/server/index.html"
@@ -17,7 +18,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@hapi/joi": "^15.1.0",
+    "babel-eslint": "^10.0.2",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
@@ -36,14 +44,9 @@
     "mocha": "^6.2.0",
     "node-datetime": "^2.1.2",
     "nyc": "^14.1.1",
+    "pg": "^7.12.1",
     "swagger-ui-dist": "^3.23.1",
-    "swagger-ui-express": "^4.0.7",
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "babel-eslint": "^10.0.2"
+    "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
     "eslint": "^6.0.1",

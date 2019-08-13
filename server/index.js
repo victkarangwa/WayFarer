@@ -16,13 +16,13 @@ app.use(bodyParse.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/v1/auth', userRoute);
+app.use('/api/v2/auth', userRoute);
 
 // Custom path: Trip endpoints
-app.use('/api/v1/trips', tripRoute);
+app.use('/api/v2/trips', tripRoute);
 
 // Custom path: Booking endpoints
-app.use('/api/v1/bookings', bookingRoute);
+app.use('/api/v2/bookings', bookingRoute);
 
 // APi Documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

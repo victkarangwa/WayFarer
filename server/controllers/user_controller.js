@@ -1,61 +1,132 @@
-import Joi from 'joi';
-import User from '../models/user_model';
+
+import generateAuthToken from '../helpers/tokens';
+import Model from '../models/db';
+import hashPassword from '../helpers/hashPassword';
 import status from '../helpers/StatusCode';
 
 class UserController {
-    signUp = (req, res) => {
-      // validation of Request payload
-      // using JOI npm
-      const schema = {
-        first_name: Joi.string().required(),
-        last_name: Joi.string().required(),
-        email: Joi.string().email().required(),
-        password: Joi.string().min(8).required(),
-        is_admin: Joi.boolean().default(false),
-      };
-      const result = Joi.validate(req.body, schema);
-      if (result.error == null) {
-        if (User.isEmailTaken(req.body.email)) {
-          // 409 = Conflict due to existing email
-          return res.status(status.REQUEST_CONFLICT).send({ status: status.REQUEST_CONFLICT, error: `${req.body.email} already exists` });
-        }
-        if (!User.validData(req.body.first_name)) {
-          return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'first_name can\'t be empty' });
-        }
-        if (!User.validData(req.body.last_name)) {
-          return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'last_name can\'t be empty' });
-        }
-        if (!User.validData(req.body.password)) {
-          return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'password can\'t be empty' });
-        }
-        // Everything is okay
-        // We fire up User model to create user
-        const user = User.create(req.body);
-        return res.status(status.RESOURCE_CREATED).send(user);
-      }
-      return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${result.error.details[0].message}` });
-    };
+  static model() {
+    return new Model('users');
+  }
 
-    signIn = (req, res) => {
-      // validation of Request payload
-      // using JOI npm
-      const schema = {
-        email: Joi.string().email().required(),
-        password: Joi.required(),
-      };
-      const result = Joi.validate(req.body, schema);
-      if (result.error == null) {
-      // Everything is okay
-        // We fire up User model to login user
-        const user = User.login(req.body);
-        if (user.status === status.REQUEST_SUCCEDED) {
-          res.set('x-auth-token', user.data.token);
-          return res.status(status.REQUEST_SUCCEDED).send(user);
-        }
-
-        return res.status(status.UNAUTHORIZED).send(user);
+  // Get all users
+  static retrieveAllUsers = async (req, res) => {
+    try {
+      const rows = await this.model().select('user_id, email, first_name, last_name, is_admin');
+      // If no users are registered
+      if (rows.length === 0) {
+        return res.status(400).json({
+          status: status.NOT_FOUND,
+          error: 'No user found',
+        });
       }
-      return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${result.error.details[0].message}` });
+      // If all users have been retrieved
+      return res.status(200).json({
+        status: status.REQUEST_SUCCEDED,
+        message: 'All users are retrived successfully',
+        data: rows,
+
+      });
+    } catch (e) {
+      // Catch any error if it rises
+      return res.status(status.SERVER_ERROR).json({
+        status: status.SERVER_ERROR,
+        error: 'server error',
+        e,
+      });
+    }
+  }
+
+  //  Signup
+  static signup = async (req, res) => {
+    try {
+      let {
+        first_name,
+        last_name,
+        email,
+        password,
+        is_admin,
+      } = req.body;
+
+      // Generate a unique ID
+      // Check if Email already exist
+      const user = await this.model().select('*', 'email=$1', [email]);
+      if (user[0]) {
+        // Catch any error if it rises
+        return res.status(status.REQUEST_CONFLICT).json({
+          status: status.REQUEST_CONFLICT,
+          error: `${email} already exists`,
+
+        });
+      }
+      // Hash user password before being stored
+      password = await hashPassword.encryptPassword(password);
+      // console.log(password);
+      const cols = 'first_name, last_name, email, is_admin, password';
+      const sels = `'${first_name}', '${last_name}', '${email}', '${is_admin}', '${password}'`;
+      const rows = await this.model().insert(cols, sels);
+
+
+      let token = generateAuthToken(rows[0].user_id, rows[0].is_admin);
+
+      return res.status(status.RESOURCE_CREATED).json({
+        status: status.RESOURCE_CREATED,
+        message: 'User signed up successfully',
+        data: {
+          user_id: rows[0].user_id,
+          first_name: rows[0].first_name,
+          last_name: rows[0].last_name,
+          email: rows[0].email,
+          token,
+
+
+        },
+      });
+      // });
+    } catch (e) {
+      // Catch any error if it rises
+      return res.status(500).json({
+        status: status.SERVER_ERROR,
+        error: 'server error',
+        e,
+      });
+    }
+  }
+
+
+    static signin = async (req, res) => {
+      try {
+        const { email, password } = req.body;
+        const data = await this.model().select('*', 'email=$1', [email]);
+        //  If user credentials are correct
+        if (data[0] && hashPassword.decryptPassword(password, data[0].password)) {
+          const token = generateAuthToken(data[0].user_id, data[0].is_admin);
+          return res.status(status.REQUEST_SUCCEDED).json({
+            status: status.REQUEST_SUCCEDED,
+            message: 'user signed in successfully',
+            data: {
+              user_id: data[0].user_id,
+              first_name: data[0].first_name,
+              last_name: data[0].last_name,
+              email: data[0].email,
+              token,
+
+            },
+          });
+        }
+        // If no user is found with provided inputs
+        return res.status(status.UNAUTHORIZED).json({
+          status: status.UNAUTHORIZED,
+          error: 'Invalid Email or Password',
+        });
+      } catch (e) {
+        // Catch any error if it rises
+        return res.status(status.SERVER_ERROR).json({
+          status: status.SERVER_ERROR,
+          error: 'server error',
+          e,
+        });
+      }
     };
 }
 
