@@ -48,7 +48,9 @@ describe('GET Both Admin and Users can see all trips, api/v2/trips', () => {
 describe('GET View a specific trip api/v2/trips/{Trip_id}', () => {
   it('should return a specific trip', (done) => {
     chai.request(app)
+
       .get('/api/v2/trips/1')
+
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -66,6 +68,7 @@ describe('GET View specifc trip with an id not an integer', () => {
   it('should return an error', (done) => {
     chai.request(app)
       .get('/api/v2/trips/k')
+
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -82,6 +85,7 @@ describe('GET view specific , api/v2/trips', () => {
   it('should return an error', (done) => {
     chai.request(app)
       .get('/api/v2/trips/9000')
+
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -148,7 +152,9 @@ describe('PATCH Admin can cancel an already cancelled trip, api/v2/trips', () =>
   });
 });
 
+
 describe('PATCH params incompleteness, api/v2/trips', () => {
+
   it('should return an error', (done) => {
     chai.request(app)
       .patch('/api/v2/trips/1/cance')
@@ -184,6 +190,7 @@ describe('PATCH trip id which is not an integer, api/v2/trips', () => {
 });
 
 describe('PATCH admin provide wrong id, api/v2/trips', () => {
+
   it('should return an error', (done) => {
     chai.request(app)
       .patch('/api/v2/trips/9/cancel')
