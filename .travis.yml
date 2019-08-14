@@ -12,7 +12,6 @@ services:
 - postgresql
 before_script:
 - psql -c 'CREATE DATABASE wayfarer;' -U postgres
-- psql -c 'CREATE USER victorkarangwa4 WITH PASSWORD 'Yeslord1';' -U postgres
 notifications: 
   email: false
 script: 
