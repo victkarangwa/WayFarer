@@ -79,10 +79,7 @@ describe('POST sign up successfully, api/v2/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(status.RESOURCE_CREATED);
         expect(res.body.status).to.equal(status.RESOURCE_CREATED);
-        expect(res.body.data.token).to.be.a('string');
-        expect(res.body.data.first_name).to.equal(fname);
-        expect(res.body.data.last_name).to.equal(lname);
-        expect(res.body.data.email).to.equal(email);
+        expect(res.body.token).to.be.a('string');
         done();
       });
   });
@@ -165,10 +162,7 @@ describe('POST signin successfully, api/v2/auth/signin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
-        expect(res.body.data.token).to.be.a('string');
-        expect(res.body.data.first_name).to.equal(fname);
-        expect(res.body.data.last_name).to.equal(lname);
-        expect(res.body.data.email).to.equal(email);
+        expect(res.body.token).to.be.a('string');
         done();
       });
   });

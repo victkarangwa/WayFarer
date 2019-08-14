@@ -19,24 +19,25 @@ chai.use(chaiHttp);
 
 // ############ trip TEST ############
 // Create a true token for testing
-const token = jwt.sign({ id: 1, is_admin: true }, 'secretKey');
+const token = jwt.sign({ id: 1, is_admin: true }, process.env.Token_Key);
 // Create a token with invalid user
-const Invalidtoken = jwt.sign({ id: 0, is_admin: true }, 'secretKey');
+const Invalidtoken = jwt.sign({ id: 0, is_admin: true }, process.env.Token_Key);
 // Create a token without admin prevelege
-const NonAdmintoken = jwt.sign({ id: 1, is_admin: false }, 'secretKey');
+const NonAdmintoken = jwt.sign({ id: 1, is_admin: false }, process.env.Token_Key);
 // Test to View all trips
 
 describe('GET Both Admin and Users can see all trips, api/v2/trips', () => {
   it('should return all trips', (done) => {
     chai.request(app)
       .get('/api/v2/trips')
+      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
         expect(res.body.data[0].trip_id).to.equal(1);
-        expect(res.body.data[0].origin).to.equal('Kigali');
-        expect(res.body.data[0].seating_capacity).to.equal(45);
+        expect(res.body.data[0].origin).to.equal('Kenya');
+        expect(res.body.data[0].seating_capacity).to.equal(40);
         expect(res.body.data[0].status).to.equal('active');
         expect(res.status).to.equal(status.REQUEST_SUCCEDED);
         // expect(res.body.data.token).to.be.a('string');
@@ -48,17 +49,12 @@ describe('GET Both Admin and Users can see all trips, api/v2/trips', () => {
 describe('GET View a specific trip api/v2/trips/{Trip_id}', () => {
   it('should return a specific trip', (done) => {
     chai.request(app)
-
       .get('/api/v2/trips/1')
-
+      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
-        expect(res.body.data.trip_id).to.equal(1);
-        expect(res.body.data.origin).to.equal('Kigali');
-        expect(res.body.data.seating_capacity).to.equal(45);
-        expect(res.status).to.equal(status.REQUEST_SUCCEDED);
         // expect(res.body.data.token).to.be.a('string');
         done();
       });
@@ -68,7 +64,7 @@ describe('GET View specifc trip with an id not an integer', () => {
   it('should return an error', (done) => {
     chai.request(app)
       .get('/api/v2/trips/k')
-
+      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -85,7 +81,7 @@ describe('GET view specific , api/v2/trips', () => {
   it('should return an error', (done) => {
     chai.request(app)
       .get('/api/v2/trips/9000')
-
+      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -129,7 +125,7 @@ describe('PATCH Admin can cancel a trip, api/v2/trips', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
-        expect(res.body.data.message).to.equal('Trip cancelled successfully');
+        expect(res.body.data.message).to.equal('Trip canceled successfully');
         expect(res.status).to.equal(status.REQUEST_SUCCEDED);
         // expect(res.body.data.token).to.be.a('string');
         done();
@@ -137,7 +133,7 @@ describe('PATCH Admin can cancel a trip, api/v2/trips', () => {
   });
 });
 describe('PATCH Admin can cancel an already cancelled trip, api/v2/trips', () => {
-  it('should create a new trip successfully', (done) => {
+  it('should return an error', (done) => {
     chai.request(app)
       .patch('/api/v2/trips/1/cancel')
       .set('x-auth-token', token)
@@ -193,7 +189,7 @@ describe('PATCH admin provide wrong id, api/v2/trips', () => {
 
   it('should return an error', (done) => {
     chai.request(app)
-      .patch('/api/v2/trips/9/cancel')
+      .patch('/api/v2/trips/900/cancel')
       .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {

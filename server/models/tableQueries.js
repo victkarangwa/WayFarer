@@ -34,16 +34,18 @@ CREATE TABLE trips(
 	origin VARCHAR NOT NULL,
     destination VARCHAR NOT NULL,
     seating_capacity INTEGER NOT NULL,
+    seating_available INTEGER NOT NULL,
 	trip_date VARCHAR NOT NULL,
 	fare FLOAT(2) NOT NULL,
     status VARCHAR DEFAULT 'active',
     created_on VARCHAR NOT NULL
 ); 
-INSERT INTO trips (bus_license_number, origin, destination, seating_capacity, trip_date, fare, status, created_on )
+INSERT INTO trips (bus_license_number, origin, destination, seating_capacity, seating_available, trip_date, fare, status, created_on )
    VALUES (
        'RAC 256 V',
        'Kenya',
        'Burundi',
+        40,
         40,
        '11082019',
        80000,
