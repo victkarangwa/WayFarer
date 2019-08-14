@@ -26,10 +26,10 @@ const Invalidtoken = jwt.sign({ id: 0, is_admin: true }, 'secretKey');
 const NonAdmintoken = jwt.sign({ id: 1, is_admin: false }, 'secretKey');
 // Test to View all trips
 
-describe('GET Both Admin and Users can see all trips, api/v1/trips', () => {
+describe('GET Both Admin and Users can see all trips, api/v2/trips', () => {
   it('should return all trips', (done) => {
     chai.request(app)
-      .get('/api/v1/trips')
+      .get('/api/v2/trips')
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -45,10 +45,12 @@ describe('GET Both Admin and Users can see all trips, api/v1/trips', () => {
   });
 });
 
-describe('GET View a specific trip api/v1/trips/{Trip_id}', () => {
+describe('GET View a specific trip api/v2/trips/{Trip_id}', () => {
   it('should return a specific trip', (done) => {
     chai.request(app)
-      .get('/api/v1/trips/1')
+
+      .get('/api/v2/trips/1')
+
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -65,7 +67,8 @@ describe('GET View a specific trip api/v1/trips/{Trip_id}', () => {
 describe('GET View specifc trip with an id not an integer', () => {
   it('should return an error', (done) => {
     chai.request(app)
-      .get('/api/v1/trips/k')
+      .get('/api/v2/trips/k')
+
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -78,10 +81,11 @@ describe('GET View specifc trip with an id not an integer', () => {
   });
 });
 
-describe('GET view specific , api/v1/trips', () => {
+describe('GET view specific , api/v2/trips', () => {
   it('should return an error', (done) => {
     chai.request(app)
-      .get('/api/v1/trips/9000')
+      .get('/api/v2/trips/9000')
+
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -97,10 +101,10 @@ describe('GET view specific , api/v1/trips', () => {
 
 // Test to create a new trip
 
-describe('POST Admin can create a trip, api/v1/trips', () => {
+describe('POST Admin can create a trip, api/v2/trips', () => {
   it('should create a new trip successfully', (done) => {
     chai.request(app)
-      .post('/api/v1/trips')
+      .post('/api/v2/trips')
       .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .send(trip[0])
@@ -116,10 +120,10 @@ describe('POST Admin can create a trip, api/v1/trips', () => {
 
 // Test to cancel a specific trip
 
-describe('PATCH Admin can cancel a trip, api/v1/trips', () => {
+describe('PATCH Admin can cancel a trip, api/v2/trips', () => {
   it('should create a new trip successfully', (done) => {
     chai.request(app)
-      .patch('/api/v1/trips/1/cancel')
+      .patch('/api/v2/trips/1/cancel')
       .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
@@ -132,10 +136,10 @@ describe('PATCH Admin can cancel a trip, api/v1/trips', () => {
       });
   });
 });
-describe('PATCH Admin can cancel an already cancelled trip, api/v1/trips', () => {
+describe('PATCH Admin can cancel an already cancelled trip, api/v2/trips', () => {
   it('should create a new trip successfully', (done) => {
     chai.request(app)
-      .patch('/api/v1/trips/1/cancel')
+      .patch('/api/v2/trips/1/cancel')
       .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
@@ -148,10 +152,12 @@ describe('PATCH Admin can cancel an already cancelled trip, api/v1/trips', () =>
   });
 });
 
-describe('PATCH params incompleteness, api/v1/trips', () => {
+
+describe('PATCH params incompleteness, api/v2/trips', () => {
+
   it('should return an error', (done) => {
     chai.request(app)
-      .patch('/api/v1/trips/1/cance')
+      .patch('/api/v2/trips/1/cance')
       .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
@@ -165,10 +171,10 @@ describe('PATCH params incompleteness, api/v1/trips', () => {
   });
 });
 
-describe('PATCH trip id which is not an integer, api/v1/trips', () => {
+describe('PATCH trip id which is not an integer, api/v2/trips', () => {
   it('should return an error', (done) => {
     chai.request(app)
-      .patch('/api/v1/trips/g/cancel')
+      .patch('/api/v2/trips/g/cancel')
       .set('x-auth-token', token)
 
       .set('Accept', 'application/json')
@@ -183,10 +189,11 @@ describe('PATCH trip id which is not an integer, api/v1/trips', () => {
   });
 });
 
-describe('PATCH admin provide wrong id, api/v1/trips', () => {
+describe('PATCH admin provide wrong id, api/v2/trips', () => {
+
   it('should return an error', (done) => {
     chai.request(app)
-      .patch('/api/v1/trips/9/cancel')
+      .patch('/api/v2/trips/9/cancel')
       .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
@@ -200,10 +207,10 @@ describe('PATCH admin provide wrong id, api/v1/trips', () => {
   });
 });
 
-describe('PATCH user without admin previlege, api/v1/trips', () => {
+describe('PATCH user without admin previlege, api/v2/trips', () => {
   it('should return forbidden status code', (done) => {
     chai.request(app)
-      .patch('/api/v1/trips/1/cancel')
+      .patch('/api/v2/trips/1/cancel')
       .set('x-auth-token', NonAdmintoken)
       .set('Accept', 'application/json')
       .end((err, res) => {

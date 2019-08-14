@@ -2,7 +2,7 @@
  "swagger": "2.0",
  "info": {
   "description": "WayFarer is a public transportation service",
-  "version": "v1",
+  "version": "v2",
   "title": "WayFarer APIs docs",
   "termsOfService": "http://swagger.io/terms/",
   "contact": {
@@ -14,7 +14,7 @@
   }
  },
  "host": "https://adc-wayfarer-api.herokuapp.com",
- "basePath": "/api/v1",
+ "basePath": "/api/v2",
  "tags": [
   {
    "name": "user",
