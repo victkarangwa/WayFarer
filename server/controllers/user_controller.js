@@ -32,7 +32,7 @@ class UserController {
       return res.status(status.SERVER_ERROR).json({
         status: status.SERVER_ERROR,
         error: 'server error',
-        e,
+        // e,
       });
     }
   }
@@ -72,15 +72,7 @@ class UserController {
       return res.status(status.RESOURCE_CREATED).json({
         status: status.RESOURCE_CREATED,
         message: 'User signed up successfully',
-        data: {
-          user_id: rows[0].user_id,
-          first_name: rows[0].first_name,
-          last_name: rows[0].last_name,
-          email: rows[0].email,
-          token,
-
-
-        },
+        token,
       });
       // });
     } catch (e) {
@@ -88,7 +80,7 @@ class UserController {
       return res.status(500).json({
         status: status.SERVER_ERROR,
         error: 'server error',
-        e,
+        // e,
       });
     }
   }
@@ -104,14 +96,7 @@ class UserController {
           return res.status(status.REQUEST_SUCCEDED).json({
             status: status.REQUEST_SUCCEDED,
             message: 'user signed in successfully',
-            data: {
-              user_id: data[0].user_id,
-              first_name: data[0].first_name,
-              last_name: data[0].last_name,
-              email: data[0].email,
-              token,
-
-            },
+            token,
           });
         }
         // If no user is found with provided inputs
@@ -124,7 +109,7 @@ class UserController {
         return res.status(status.SERVER_ERROR).json({
           status: status.SERVER_ERROR,
           error: 'server error',
-          e,
+          // e,
         });
       }
     };
