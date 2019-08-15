@@ -19,6 +19,7 @@ The project is composed of two different parts:
 * API Endpoints
    * Node JS
    * Postman (For testing api locally)
+   * Postgres
   
 ### Cloning the project
 
@@ -37,6 +38,7 @@ The project is composed of two different parts:
    2. Download and install [Postman](https://www.getpostman.com/downloads/)
    3. Clone the project. [WayFarer](https://github.com/victorkarangwa4/WayFarer/tree/develop)
    4. Run `npm install` (`sudo apt install` for linux users) command for installing all project dependencies
+   5. Make sure you have downloaded postgres
 
 ## Running the tests
 
