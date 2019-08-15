@@ -6,23 +6,25 @@ import config from './config/default';
 import userRoute from './routes/user_route';
 import tripRoute from './routes/trip_route';
 import bookingRoute from './routes/booking_route';
+import errorHandler from './middleware/error.handler';
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../app.json');
 
 const app = express();
 app.use(bodyParse.json());
+
 // Custom path: For signin and signup endpoints
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/v1/auth', userRoute);
+app.use('/api/v2/auth', userRoute);
 
 // Custom path: Trip endpoints
-app.use('/api/v1/trips', tripRoute);
+app.use('/api/v2/trips', tripRoute);
 
 // Custom path: Booking endpoints
-app.use('/api/v1/bookings', bookingRoute);
+app.use('/api/v2/bookings', bookingRoute);
 
 // APi Documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -34,7 +36,7 @@ app.use('/', (req, res) => {
     error: 'Incorrect route',
   });
 });
-
+app.use(errorHandler);
 
 const { port } = config;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

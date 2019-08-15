@@ -92,7 +92,7 @@ class Booking {
         // decode token for the sake of picking user_id
         // to use in setting trip owner.
         try {
-          const decoded = jwt.verify(token, 'secretKey');
+          const decoded = jwt.verify(token, process.env.Token_Key);
           // it returns user object
           return decoded;
         } catch (error) {
