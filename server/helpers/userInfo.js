@@ -11,7 +11,9 @@ const getUserId = (res, token) => {
 
   try {
     const decoded = jwt.verify(token, process.env.Token_Key);
+    // console.log(`user id ${decoded.is_admin}`);
     return decoded.user_id;
+    
   } catch (error) {
     return res.status(status.BAD_REQUEST).send({ status: 'error', error: error.message });
   }

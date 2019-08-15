@@ -2,17 +2,19 @@ import jwt from 'jsonwebtoken';
 
 import chai from 'chai';
 
+import dotenv from 'dotenv';
+
 import chaiHttp from 'chai-http';
 
 import app from '../index';
 
 import trip from '../models/trips';
 
-import users from '../models/user_model';
-
 import status from '../helpers/StatusCode';
 
 const { expect } = chai;
+
+dotenv.config();
 
 chai.use(chaiHttp);
 
@@ -127,6 +129,22 @@ describe('PATCH Admin can cancel a trip, api/v2/trips', () => {
         expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
         expect(res.body.data.message).to.equal('Trip canceled successfully');
         expect(res.status).to.equal(status.REQUEST_SUCCEDED);
+        // expect(res.body.data.token).to.be.a('string');
+        done();
+      });
+  });
+});
+describe('POST Admin is able to creat an active trip api/v2/trips', () => {
+  it('must create a new trip successfully', (done) => {
+    chai.request(app)
+      .post('/api/v2/trips')
+      .set('x-auth-token', token)
+      .set('Accept', 'application/json')
+      .send(trip[1])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal(status.RESOURCE_CREATED);
+        expect(res.status).to.equal(status.RESOURCE_CREATED);
         // expect(res.body.data.token).to.be.a('string');
         done();
       });
