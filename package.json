@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "babel-node ./server/models/tableQueries.js createTables && nyc --reporter=text --reporter=html mocha server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
-    "start": " babel-node ./server/index.js",
+    "start": "npm run queries && babel-node ./server/index.js",
     "queries": "babel-node ./server/models/tableQueries.js createTables",
     "dev-start": " nodemon --exec babel-node ./server/index.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
