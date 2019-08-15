@@ -38,7 +38,7 @@ The project is composed of two different parts:
    2. Download and install [Postman](https://www.getpostman.com/downloads/)
    3. Clone the project. [WayFarer](https://github.com/victorkarangwa4/WayFarer/tree/develop)
    4. Run `npm install` (`sudo apt install` for linux users) command for installing all project dependencies
-   5. Make sure you have downloaded postgres
+   5. Make sure you have downloaded and [Installed](https://www.postgresql.org/download/) postgres
 
 ## Running the tests
 
@@ -59,6 +59,9 @@ The project is composed of two different parts:
    * Style Guide: [Airbnb](https://github.com/airbnb/javascript)
    * Testing Framework: [Mocha](https://mochajs.org/)
    * Documentation Tools: [Swagger](https://swagger.io/tools/swagger-ui/)
+   * Database: [Postgres](https://www.postgresql.org/download/)
+   * Hosting: [Heroku](https://www.heroku.com/)
+)
 
 * UI Templates
    * CSS 
