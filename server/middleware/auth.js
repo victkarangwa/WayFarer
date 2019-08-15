@@ -16,6 +16,7 @@ const isUserExist = async (decodedId) => {
 };
 const auth = async (req, res, next) => {
   const token = req.header('x-auth-token');
+ 
   if (!token) return res.status(status.UNAUTHORIZED).send({ status: status.UNAUTHORIZED, error: 'Access denied. No token provided' });
 
   try {
