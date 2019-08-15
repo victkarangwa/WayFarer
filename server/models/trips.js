@@ -6,6 +6,7 @@ const trip = [{
   trip_date: '2019-09-15',
   fare: 5,
   status: 'canceled',
+
 },
 {
   seating_capacity: 5,
@@ -15,6 +16,7 @@ const trip = [{
   trip_date: '2019-09-15',
   fare: 5,
   status: 'active',
+
 },
 ];
 export default trip;
