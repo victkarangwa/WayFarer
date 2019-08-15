@@ -108,8 +108,12 @@ class BookingController {
           return res.status(status.FORBIDDEN).send({ status: status.FORBIDDEN, message: 'Access denied!, You do not have permission to delete this booking.' });
         }
         // otherwise go ahead and remove property
-
-        const deleteTrip = await BookingController.booking().delete('booking_id=$1', [req.params.id]);
+        const booking = await BookingController.booking().select('*', 'booking_id=$1', [req.params.id]);
+        const { trip_id } = booking[0];
+        const trip = await BookingController.trips().select('*', 'trip_id=$1', [trip_id]);
+        const increase = trip[0].seating_available + 1;
+        await BookingController.trips().update('seating_available=$1', 'trip_id=$2', [increase, trip_id]);
+        await BookingController.booking().delete('booking_id=$1', [req.params.id]);
         return res.status(status.REQUEST_SUCCEDED).send({ status: status.REQUEST_SUCCEDED, data: { message: 'Booking deleted successfully' } });
       } catch (e) {
         return res.status(status.SERVER_ERROR).json({
