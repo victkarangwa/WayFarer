@@ -7,7 +7,7 @@ class Model {
     this.table = table;
 
     this.pool = new Pool({
-      connectionString: process.env.DB_URL,
+      connectionString: process.env.DATABASE_URL,
     });
 
     this.pool.on('error', (err, client) => {
