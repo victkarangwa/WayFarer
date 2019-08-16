@@ -1,7 +1,7 @@
 const bookings = [
   // valid booking
   {
-    trip_id: 3,
+    trip_id: 1,
     seats_booked: 1,
   },
   // Invalid booking
