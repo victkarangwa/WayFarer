@@ -23,39 +23,7 @@ const token0 = jwt.sign({ user_id: 1, is_admin: false }, process.env.Token_Key);
 // Create a false token for testing
 const NonUsertoken = jwt.sign({ id: 0, is_admin: true }, process.env.Token_Key);
 
-describe('POST User can book a seat, api/v2/booking', () => {
-  it('should create a booking successfully', (done) => {
-    chai.request(app)
-      .post('/api/v2/bookings')
-      .send(booking[0])
-      .set('x-auth-token', token)
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal(status.RESOURCE_CREATED);
-        expect(res.status).to.equal(status.RESOURCE_CREATED);
-        // expect(res.body.data.token).to.be.a('string');
-        done();
-      });
-  });
-});
-describe('POST User tries to book unavailable trip', () => {
-  it('should return an error', (done) => {
-    chai.request(app)
-      .post('/api/v2/bookings')
-      .send(booking[1])
-      .set('x-auth-token', token)
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal(status.NOT_FOUND);
-        expect(res.body.error).to.equal('The Trip you are trying to book is not found!');
-        expect(res.status).to.equal(status.NOT_FOUND);
-        // expect(res.body.data.token).to.be.a('string');
-        done();
-      });
-  });
-});
+
 
 describe('POST User book without access', () => {
   it('should return an error', (done) => {
@@ -126,34 +94,3 @@ describe('DELETE User delete a booking without access', () => {
   });
 });
 
-describe('GET User view all booking', () => {
-  it('should return all user bookings', (done) => {
-    chai.request(app)
-      .get('/api/v2/bookings')
-      .set('x-auth-token', token0)
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
-        expect(res.status).to.equal(status.REQUEST_SUCCEDED);
-        // expect(res.body.data.token).to.be.a('string');
-        done();
-      });
-  });
-});
-
-describe('GET User view all booking', () => {
-  it('should return all user bookings', (done) => {
-    chai.request(app)
-      .get('/api/v2/bookings')
-      .set('x-auth-token', token)
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
-        expect(res.status).to.equal(status.REQUEST_SUCCEDED);
-        // expect(res.body.data.token).to.be.a('string');
-        done();
-      });
-  });
-});

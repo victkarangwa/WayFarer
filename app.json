@@ -68,9 +68,15 @@
      "201": {
       "description": "Account Created Successfully"
      },
+     "400": {
+        "description": "Bad Request - invalid inputs "
+       },
      "409": {
       "description": "User already exist"
-     }
+     },
+     "500": {
+        "description": "Server error"
+       }
     }
    }
   },
@@ -102,13 +108,19 @@
      }
     ],
     "responses": {
-     "201": {
-      "description": "Account Created Successfully"
-     },
-     "409": {
-      "description": "User already exist"
-     }
-    }
+        "200": {
+         "description": "Signed in Successfully"
+        },
+        "400": {
+           "description": "Bad Request - invalid inputs "
+          },
+        "401": {
+         "description": "Incorrect credentials"
+        },
+        "500": {
+           "description": "Server error"
+          }
+       }
    }
   },
   "/trips": {
@@ -140,13 +152,22 @@
      }
     ],
     "responses": {
-     "201": {
-      "description": "Trip created successfully"
-     },
-     "403": {
-      "description": "User not allowed to perform action"
-     }
-    }
+        "201": {
+         "description": "Trip Created Successfully"
+        },
+        "400": {
+           "description": "Bad Request - invalid inputs "
+          },
+        "403": {
+            "description": "Not allowed to create Trip"
+           },
+        "409": {
+         "description": "Trip already exists"
+        },
+        "500": {
+           "description": "Server error"
+          }
+       }
    },
    "get": {
     "tags": [
@@ -168,18 +189,23 @@
       "name": "x-auth-token",
       "in": "header",
       "type": "string",
-      "description": "The value to provide in the  header of API request",
-      "required": true
+      "description": "The value to provide in the  header of API request"
      }
     ],
     "responses": {
-     "200": {
-      "description": "Trips retried successfully"
-     },
-     "409": {
-      "description": "User already exist"
-     }
-    }
+        "200": {
+         "description": "Trips retrieved Successfully"
+        },
+        "400": {
+           "description": "Bad Request - invalid inputs "
+          },
+        "404": {
+            "description": "No trips available"
+           },
+        "500": {
+           "description": "Server error"
+          }
+       }
    }
   },
   "/trips/{trip_id}/cancel": {
@@ -193,8 +219,7 @@
      {
       "name": "x-auth-token",
       "in": "header",
-      "description": "The user token",
-      "required": true
+      "description": "The user token"
      },
      {
       "name": "trip_id",
@@ -208,16 +233,26 @@
      "application/json"
     ],
     "responses": {
-     "200": {
-      "description": "Success: trip cancelled successfully"
-     },
-     "400": {
-      "description": "Bad Error"
-     },
-     "401": {
-      "description": "Error: authentication error"
-     }
-    }
+        "200": {
+         "description": "Trip Canceled Successfully"
+        },
+        "400": {
+           "description": "Bad Request - invalid inputs "
+          },
+        
+        "403": {
+            "description": "Not allowed to cancel Trip"
+           },
+        "404": {
+            "description": "Trip not found"
+           },           
+        "409": {
+         "description": "Trip is already canceled"
+        },
+        "500": {
+           "description": "Server error"
+          }
+       }
    }
   },
   "/trips/{trip_id}": {
@@ -241,8 +276,7 @@
       "name": "x-auth-token",
       "in": "header",
       "type": "string",
-      "description": "The value to provide in the  header of API request",
-      "required": true
+      "description": "The value to provide in the  header of API request"
      },
      {
       "name": "trip_id",
@@ -253,13 +287,19 @@
      }
     ],
     "responses": {
-     "200": {
-      "description": "success:"
-     },
-     "409": {
-      "description": "User already exist"
-     }
-    }
+        "200": {
+         "description": "Trip retrieved Successfully"
+        },
+        "400": {
+           "description": "Bad Request - invalid inputs "
+          },
+        "404": {
+         "description": "Trip not found"
+        },
+        "500": {
+           "description": "Server error"
+          }
+       }
    }
   },
   "/bookings": {
@@ -291,13 +331,23 @@
      }
     ],
     "responses": {
-     "201": {
-      "description": "Booking created successfully"
-     },
-     "403": {
-      "description": "User not allowed to perform action"
-     }
-    }
+        "201": {
+         "description": "Booking Created Successfully"
+        },
+        "400": {
+           "description": "Bad Request - invalid inputs "
+          },
+        "401": {
+            "description": "Unauthorized - No token provided "
+           },
+        "403": {
+            "description": "Booking unavailable"
+           },
+
+        "500": {
+           "description": "Server error"
+          }
+       }
    },
    "get": {
     "tags": [
@@ -315,20 +365,27 @@
       "name": "x-auth-token",
       "in": "header",
       "type": "string",
-      "description": "The value to provide in the  header of API request"
+      "description": "The value to provide in the  header of API request",
+      "required":true
      }
     ],
     "responses": {
-     "200": {
-      "description": "Success: booking retrieved successfully"
-     },
-     "403": {
-      "description": "User not allowed to perform action"
-     }
-    }
+        "200": {
+         "description": "Booking Successfully"
+        },
+        "400": {
+           "description": "Bad Request - invalid inputs "
+          },
+        "401": {
+            "description": "Unauthorized - No token provided "
+           },
+        "500": {
+           "description": "Server error"
+          }
+       }
    }
   },
-  "/bookings/{trip_id}": {
+  "/bookings/{id}": {
    "delete": {
     "tags": [
      "Booking"
@@ -354,13 +411,25 @@
      }
     ],
     "responses": {
-     "201": {
-      "description": "Booking created successfully"
-     },
-     "403": {
-      "description": "User not allowed to perform action"
-     }
-    }
+        "200": {
+         "description": "Booking Successfully"
+        },
+        "400": {
+           "description": "Bad Request - invalid inputs "
+          },
+        "401": {
+            "description": "Unauthorized -  No token provided"
+           },
+        "404": {
+            "description": "Not found"
+           },        
+        "403": {
+            "description": "Not allowed to delete"
+           },
+        "500": {
+           "description": "Server error"
+          }
+       }
    }
   }
  },
@@ -436,7 +505,10 @@
    "properties": {
     "trip_id": {
      "type": "integer"
-    }
+    },
+    "seats_booked": {
+        "type": "integer"
+       }
    },
    "xml": {
     "name": "Trip"

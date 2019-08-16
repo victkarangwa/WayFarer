@@ -20,6 +20,7 @@ class BookingController {
     static bookSeat = async (req, res) => {
       const schema = {
         trip_id: Joi.number().required(),
+        seats_booked: Joi.number().min(1).max(5).required(),
       };
       const result = Joi.validate(req.body, schema);
       if (result.error === null) {
@@ -30,20 +31,22 @@ class BookingController {
         try {
           const {
             trip_id,
+            seats_booked,
           } = req.body;
           const user_id = userInfo.getUserId(res, req.header('x-auth-token'));
           const user = await BookingController.user().select('*', 'user_id=$1', [user_id]);
           const trip = await BookingController.trips().select('*', 'trip_id=$1', [trip_id]);
-          const reduce = trip[0].seating_available - 1;
+          // Reduce the trip available seats by the number of seats booked
+          const reduce = trip[0].seating_available - seats_booked;
           await BookingController.trips().update('seating_available=$1', 'trip_id=$2', [reduce, trip_id]);
            console.log(userInfo.getUserId(res, req.header('x-auth-token')));
           if (user[0] === undefined) {
             return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, error: 'The User associated with this token doesn\'t exist.' });
           }
 
-          const cols = 'user_id, trip_id,bus_license_number, trip_date, first_name, last_name, email';
-          const sels = '$1,$2,$3,$4,$5,$6,$7';
-          const vals = [user_id, trip[0].trip_id, trip[0].bus_license_number, trip[0].trip_date, user[0].first_name, user[0].last_name, user[0].email];
+          const cols = 'user_id, trip_id,bus_license_number, seats_booked, trip_date, first_name, last_name, email';
+          const sels = '$1,$2,$3,$4,$5,$6,$7,$8';
+          const vals = [user_id, trip[0].trip_id, trip[0].bus_license_number, seats_booked, trip[0].trip_date, user[0].first_name, user[0].last_name, user[0].email];
           const book = await BookingController.booking().insert(cols, sels, vals);
           return res.status(status.RESOURCE_CREATED).send({
             status: status.RESOURCE_CREATED,
@@ -109,9 +112,10 @@ class BookingController {
         }
         // otherwise go ahead and remove property
         const booking = await BookingController.booking().select('*', 'booking_id=$1', [req.params.id]);
-        const { trip_id } = booking[0];
+        const { trip_id, seats_booked } = booking[0];
         const trip = await BookingController.trips().select('*', 'trip_id=$1', [trip_id]);
-        const increase = trip[0].seating_available + 1;
+        // Increase the trip available seats by the number of seats booked
+        const increase = trip[0].seating_available + seats_booked;
         await BookingController.trips().update('seating_available=$1', 'trip_id=$2', [increase, trip_id]);
         await BookingController.booking().delete('booking_id=$1', [req.params.id]);
         return res.status(status.REQUEST_SUCCEDED).send({ status: status.REQUEST_SUCCEDED, data: { message: 'Booking deleted successfully' } });

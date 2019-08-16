@@ -52,7 +52,6 @@ describe('GET View a specific trip api/v2/trips/{Trip_id}', () => {
   it('should return a specific trip', (done) => {
     chai.request(app)
       .get('/api/v2/trips/1')
-      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -79,16 +78,15 @@ describe('GET View specifc trip with an id not an integer', () => {
   });
 });
 
-describe('GET view specific , api/v2/trips', () => {
+describe('GET view specific invalid trip, api/v2/trips', () => {
   it('should return an error', (done) => {
     chai.request(app)
       .get('/api/v2/trips/9000')
-      .set('x-auth-token', token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(status.NOT_FOUND);
-        expect(res.body.error).to.equal('Such kind of trip is not found!');
+        expect(res.body.error).to.equal('Trip not found');
         expect(res.status).to.equal(status.NOT_FOUND);
         // expect(res.body.data.token).to.be.a('string');
         done();
@@ -126,15 +124,15 @@ describe('PATCH Admin can cancel a trip, api/v2/trips', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal(status.REQUEST_SUCCEDED);
-        expect(res.body.data.message).to.equal('Trip canceled successfully');
-        expect(res.status).to.equal(status.REQUEST_SUCCEDED);
+        expect(res.body.status).to.equal(status.FORBIDDEN);
+        expect(res.body.error).to.equal('You can not cancel this trip, It has some bookins already');
+        expect(res.status).to.equal(status.FORBIDDEN);
         // expect(res.body.data.token).to.be.a('string');
         done();
       });
   });
 });
-describe('POST Admin is able to creat an active trip api/v2/trips', () => {
+describe('POST Admin is able to create an active trip api/v2/trips', () => {
   it('must create a new trip successfully', (done) => {
     chai.request(app)
       .post('/api/v2/trips')
@@ -150,25 +148,8 @@ describe('POST Admin is able to creat an active trip api/v2/trips', () => {
       });
   });
 });
-describe('PATCH Admin can cancel an already cancelled trip, api/v2/trips', () => {
-  it('should return an error', (done) => {
-    chai.request(app)
-      .patch('/api/v2/trips/1/cancel')
-      .set('x-auth-token', token)
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equal(status.REQUEST_CONFLICT);
-        expect(res.status).to.equal(status.REQUEST_CONFLICT);
-        // expect(res.body.data.token).to.be.a('string');
-        done();
-      });
-  });
-});
-
 
 describe('PATCH params incompleteness, api/v2/trips', () => {
-
   it('should return an error', (done) => {
     chai.request(app)
       .patch('/api/v2/trips/1/cance')
@@ -204,7 +185,6 @@ describe('PATCH trip id which is not an integer, api/v2/trips', () => {
 });
 
 describe('PATCH admin provide wrong id, api/v2/trips', () => {
-
   it('should return an error', (done) => {
     chai.request(app)
       .patch('/api/v2/trips/900/cancel')

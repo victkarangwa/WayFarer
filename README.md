@@ -40,9 +40,6 @@ The project is composed of two different parts:
    4. Run `npm install` (`sudo apt install` for linux users) command for installing all project dependencies
    5. Make sure you have downloaded and [Installed](https://www.postgresql.org/download/) postgres
 
-   5. Make sure you have downloaded and [Installed](https://www.postgresql.org/download/) postgres
-
-
 ## Running the tests
 
   1. Open command prompt
