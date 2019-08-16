@@ -115,6 +115,12 @@ export const validBooking = async (req, res, next) => {
     const Bookingresult = Joi.validate(req.body, Bookingschema);
     if (Bookingresult.error !== null) return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${Bookingresult.error.details[0].message}` });
 
+    const schema = {
+      trip_id: Joi.number().required(),
+    };
+    const result = Joi.validate(req.body, schema);
+    if (result.error !== null) return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${result.error.details[0].message}` });
+
 
     const { trip_id, seats_booked } = req.body;
     const trip = await Trip_model.select('*', 'trip_id=$1', [trip_id]);
@@ -136,6 +142,8 @@ export const validBooking = async (req, res, next) => {
       return res.status(status.FORBIDDEN).send({ status: status.FORBIDDEN, error: `Only ${seats_Av} seats are available ` });
     }
     next();
+
+    
   } catch (e) {
     return res.status(500).json({
       error: e.message,
