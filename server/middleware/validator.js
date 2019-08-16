@@ -112,8 +112,8 @@ export const validBooking = async (req, res, next) => {
       trip_id: Joi.number().required(),
       seats_booked: Joi.number().min(1).max(5).required(),
     };
-    const result = Joi.validate(req.body, Bookingschema);
-    if (result.error !== null) return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${result.error.details[0].message}` });
+    const Bookingresult = Joi.validate(req.body, Bookingschema);
+    if (Bookingresult.error !== null) return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${Bookingresult.error.details[0].message}` });
 
 
     const { trip_id, seats_booked } = req.body;
