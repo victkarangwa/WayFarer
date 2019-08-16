@@ -25,7 +25,8 @@ const auth = async (req, res, next) => {
     // and find if that id exists in our users[](later on would be)
     // because we can not trust that user still exists
     // console.log(` code: ${User.isUserExist(decoded_jwt.user_id)}`);
-    if (!isUserExist(decoded_jwt.user_id)) {
+    const user = await model.select('*', 'user_id=$1', [decoded_jwt.user_id]);
+    if (!user.length) {
       return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, error: 'The User associated with this token doesn\'t exist.' });
     }
     next();

@@ -8,6 +8,10 @@ class TripController {
     return new Model('trips');
   }
 
+  static Booking_model() {
+    return new Model('bookings');
+  }
+
   // Create a trip
    createTrip = async (req, res) => {
      try {
@@ -42,19 +46,45 @@ class TripController {
    };
 
    findOneTrip = async (req, res) => {
+     const token = req.header('x-auth-token');
      if (isNaN(req.params.id.trim())) {
        return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'Trip id should be an integer' });
      }
-     let trip = await TripController.model().select('*', 'trip_id=$1', [req.params.id]);
-     if (trip.length === 0) {
-       return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, error: 'Such kind of trip is not found!' });
+
+     let trips;
+     // If token is provided
+     if (token) {
+       if (userInfo.getUserPrev(res, token)) {
+         // Display all trips to the admin
+         trips = await TripController.model().select('*', 'trip_id=$1', [req.params.id]);
+       } else {
+         // Display only active trips to the users
+         trips = await TripController.model().select('*', 'status=$1 AND trip_id=$2', ['active', req.params.id]);
+       }
+
+       if (trips.length === 0) {
+         return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, data: 'Trip not found!' });
+       }
+       return res.status(status.REQUEST_SUCCEDED).send(
+         {
+           status: status.REQUEST_SUCCEDED,
+           message: 'Trip retrieved successfully',
+           data: trips,
+         },
+       );
      }
-     trip = {
-       status: status.REQUEST_SUCCEDED,
-       message: 'Trip retrieved successfully',
-       data: trip,
-     };
-     return res.status(status.REQUEST_SUCCEDED).send(trip);
+     // If no token provided, display only active trips
+     trips = await TripController.model().select('*', 'status=$1 AND trip_id=$2', ['active', req.params.id]);
+     if (trips.length === 0) {
+       return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, error: 'Trip not found' });
+     }
+     return res.status(status.REQUEST_SUCCEDED).send(
+       {
+         status: status.REQUEST_SUCCEDED,
+         message: 'Trip retrieved successfully',
+         data: trips,
+       },
+     );
    };
 
    // Find all available trip
@@ -94,14 +124,29 @@ class TripController {
 
       // With no filter
       let trips;
-      if (userInfo.getUserPrev(res, token)) {
+      // If token is provided
+      if (token) {
+        if (userInfo.getUserPrev(res, token)) {
         // Display all trips to the admin
-        trips = await TripController.model().select('*');
-      } else {
+          trips = await TripController.model().select('*');
+        } else {
         // Display only active trips to the users
-        trips = await TripController.model().select('*', 'status=$1', ['active']);
-      }
+          trips = await TripController.model().select('*', 'status=$1', ['active']);
+        }
 
+        if (trips.length === 0) {
+          return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, data: 'No trips yet!' });
+        }
+        return res.status(status.REQUEST_SUCCEDED).send(
+          {
+            status: status.REQUEST_SUCCEDED,
+            message: 'All trips retrieved successfully',
+            data: trips,
+          },
+        );
+      }
+      // If no token provided, display only active trips
+      trips = await TripController.model().select('*', 'status=$1', ['active']);
       if (trips.length === 0) {
         return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, data: 'No trips yet!' });
       }
@@ -119,6 +164,7 @@ class TripController {
     cancelTrip = async (req, res) => {
       try {
         const trip = await TripController.model().select('*', 'trip_id=$1', [req.params.id]);
+        const booking = await TripController.Booking_model().select('*', 'trip_id=$1', [req.params.id]);
         // console.log(isNaN(req.params.id.trim()));
         // if (!(req.params.cancel.trim() === 'cancel')) {
         //   return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'Please supply :cancel param!' });
@@ -127,7 +173,7 @@ class TripController {
         //   return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: 'Trip id should be an integer' });
         // }
         if (trip.length === 0) return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, error: 'Such trip is not found!' });
-
+        if (booking.length !== 0) return res.status(status.FORBIDDEN).send({ status: status.FORBIDDEN, error: 'You can not cancel this trip, It has some bookins already' });
         // If the trip is already cancelled
         if (trip[0].status === 'canceled') return res.status(status.REQUEST_CONFLICT).send({ status: status.REQUEST_CONFLICT, error: 'Trip is already cancelled' });
 

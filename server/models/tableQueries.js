@@ -60,6 +60,7 @@ CREATE TABLE bookings(
     user_id INTEGER NOT NULL,
 	trip_id INTEGER NOT NULL,
     bus_license_number VARCHAR NOT NULL,
+    seats_booked INTEGER NOT NULL,
     trip_date VARCHAR NOT NULL,
     first_name VARCHAR NOT NULL,
     last_name VARCHAR NOT NULL,
@@ -67,11 +68,12 @@ CREATE TABLE bookings(
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE cascade,
     FOREIGN KEY (trip_id) REFERENCES trips(trip_id) ON DELETE cascade
 ); 
-INSERT INTO bookings (user_id, trip_id, bus_license_number, trip_date, first_name, last_name, email )
+INSERT INTO bookings (user_id, trip_id, bus_license_number, seats_booked, trip_date, first_name, last_name, email )
    VALUES (
        1,
        1,
        'RAC 256 V',
+       1,
        '11082019',
        'Vicky',
        'Boffin',
