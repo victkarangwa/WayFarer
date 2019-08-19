@@ -115,7 +115,6 @@ export const validBooking = async (req, res, next) => {
     const Bookingresult = Joi.validate(req.body, Bookingschema);
     if (Bookingresult.error !== null) return res.status(status.BAD_REQUEST).send({ status: status.BAD_REQUEST, error: `${Bookingresult.error.details[0].message}` });
 
-
     const { trip_id, seats_booked } = req.body;
     const trip = await Trip_model.select('*', 'trip_id=$1', [trip_id]);
     if (!trip[0]) { return res.status(status.NOT_FOUND).send({ status: status.NOT_FOUND, error: 'The Trip you are trying to book is not found!' }); }
@@ -136,6 +135,8 @@ export const validBooking = async (req, res, next) => {
       return res.status(status.FORBIDDEN).send({ status: status.FORBIDDEN, error: `Only ${seats_Av} seats are available ` });
     }
     next();
+
+    
   } catch (e) {
     return res.status(500).json({
       error: e.message,
