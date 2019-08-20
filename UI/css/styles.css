@@ -1006,6 +1006,7 @@ text-align: center;
     }
     .mobnav{
       display: block;
+      width: 100%;
     }
    /* Make a table responsive */
     
@@ -1036,7 +1037,7 @@ text-align: center;
     }
     img{margin: 0 auto;}
     .scrollable{
-      width: 85%;
+      width: 100%;
     margin-bottom: 10px;
     }
     .trip-table th{
