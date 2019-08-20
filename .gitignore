@@ -1,0 +1,11 @@
+.nyc_output/
+node_modules/
+.eslint
+coverage.html
+package-lock.json
+coverage/
+swagger-editor-doc/
+
+# Swagger editor
+api/
+public/

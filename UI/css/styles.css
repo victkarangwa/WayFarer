@@ -932,6 +932,7 @@ text-align: center;
     width:400px;
   }
   .trip-input{
+
     width:wrap;
     height:30px;
     border: 1px solid #c7c7c7;
@@ -1080,6 +1081,7 @@ text-align: center;
  .home-search-row{
 
   flex-direction: column;
+
 }
 .text-input{
   width:200px;
@@ -1099,6 +1101,7 @@ text-align: center;
  #bookinginfo{
   margin:10px;
  }
+
  .custom-img{
   width:300px;
   height:180px;
@@ -1106,6 +1109,7 @@ text-align: center;
  .left-text{
    text-align: center;
  }
+
  .all-trips{
    width: 350px;
  }
