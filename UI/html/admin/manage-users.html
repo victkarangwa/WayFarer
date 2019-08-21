@@ -72,27 +72,7 @@
 
 
        </div>
-<!-- Vertical Menu -->
-<!-- <div class="sorting">
-    <div class="filter-options">
-        <Form class="filter-form">
-            <h3>Filter By</h3>
-  <input type="radio" name="filter"  checked="checked" id="filter-origin"/><label>Origin</label><br>
-  <input type="radio" name="filter" class="custom-radio"  id="filter-Destination"/><label>Destination</label><br>
-  <input type="radio" name="filter" class="custom-radio" id="filter-Date"/><label>Date</label><br>
-  <input type="radio" name="filter" class="custom-radio"  id="filter-Price"/><label>Fare</label><br>
-  <input type="radio" name="filter" class="custom-radio"  id="filter-Bus"/><label>Bus</label><br>
-</Form>
-    </div>
-    <div class="filter-criteria">
-        <form class="filter-form">
-                <h3>Criteria</h3>
-             <input type="radio" name="filter" class="custom-radio" checked id="low-high"/><label>Low To High</label><br>
-            <input type="radio" name="filter" class="custom-radio" id="high-low"/><label>High to Low</label> 
-        </form>
-          
-    </div>
-</div> -->
+
 
 <div class="container-center">
 <div class="all-trips">
@@ -136,7 +116,9 @@
                <td>admin</td>
                <td>11/07/2019</td>
                
-               <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="deleteUser()" class="square-image"src="../../img/remove.png"/></td>
+
+               <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="dialogbox('Are you sure you want to delete this user?')" class="square-image"src="../../img/remove.png"/></td>
+
                            </tr>
              <tr onclick="viewUser()">
                 <td>WF4785</td>
@@ -147,7 +129,9 @@
                <td>admin</td>
                <td>11/07/2019</td>
                
-               <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="deleteUser()" class="square-image"src="../../img/remove.png"/></td>
+
+               <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="dialogbox('Are you sure you want to delete this user?')" class="square-image"src="../../img/remove.png"/></td>
+
                        </tr>
                <tr onclick="viewUser()">
                   <td>WF4785</td>
@@ -158,7 +142,9 @@
                   <td>admin</td>
                   <td>11/07/2019</td>
                   
-                  <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="deleteUser()" class="square-image"src="../../img/remove.png"/></td>
+
+                  <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="dialogbox('Are you sure you want to delete this user?')" class="square-image"src="../../img/remove.png"/></td>
+
                   </tr>
                  <tr onclick="viewUser()">
                     <td>WF4785</td>
@@ -169,7 +155,9 @@
                     <td>admin</td>
                     <td>11/07/2019</td>
                     
-                    <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="deleteUser()" class="square-image"src="../../img/remove.png"/></td>
+
+                    <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="dialogbox('Are you sure you want to delete this user?')" class="square-image"src="../../img/remove.png"/></td>
+
                  </tr>
                    <tr onclick="viewUser()">
                       <td>WF4785</td>
@@ -180,7 +168,9 @@
                       <td>admin</td>
                       <td>11/07/2019</td>
                       
-                      <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="deleteUser()" class="square-image"src="../../img/remove.png"/></td>
+
+                      <td><img title="Delete" alt="Delete" onclick="viewUser()" class="square-image"src="../../img/view.png"/><img title="View" alt="View" onclick="dialogbox('Are you sure you want to delete this user?')" class="square-image"src="../../img/remove.png"/></td>
+
                 </tr>
                 
                        
@@ -237,7 +227,9 @@
                   
                         <tr>
                           <td> <input type="button" class="custom-btn" value="Delete" onclick="dialogbox('Are you sure you want to delete this user?')"/></td>
-                          <td><input type="button" class="custom-btn" value="Save Changes" onclick="bookTrip()"/></td>
+
+                          <td><input type="button" class="custom-btn" value="Save Changes" /></td>
+
                         </tr>
        </table>
 

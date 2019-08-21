@@ -85,6 +85,9 @@ const closeModalView = () => {
 };
 const bookTrip = () => {
 
+  location.replace('../html/book_specific_trip.html');
+
+
 };
 // View Booking
 const viewBooking = () => {
